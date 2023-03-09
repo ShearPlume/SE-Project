@@ -7,10 +7,10 @@
         <rNum>1</rNum><!--required staff number-->
         <rWorkExp>2</rWorkExp><!--required work experience-->
         <rEduLevel>postgraduate</rEduLevel><!--education level: doctor > postgraduate > undergraduate-->
-        <abilities><!--required abilities-->
+        <skills><!--required skills-->
             <a>matlab</a>
             <a>excel</a>
-        </abilities>
+        </skills>
     </requirement>
 
     <requirement>
@@ -19,10 +19,10 @@
         <rNum>2</rNum>
         <rWorkExp>2</rWorkExp>
         <rEduLevel>doctor</rEduLevel>
-        <abilities>
+        <skills>
             <a>programming</a>
             <a>system engineering</a>
-        </abilities>
+        </skills>
     </requirement>
 
     <requirement>
@@ -31,10 +31,10 @@
         <rNum>3</rNum>
         <rWorkExp>4</rWorkExp>
         <rEduLevel>undergraduate</rEduLevel>
-        <abilities>
+        <skills>
             <a>painting</a>
             <a>drawing</a>
-        </abilities>
+        </skills>
     </requirement>
 
     <requirement>
@@ -43,10 +43,10 @@
         <rNum>2</rNum>
         <rWorkExp>3</rWorkExp>
         <rEduLevel>postgraduate</rEduLevel>
-        <abilities>
+        <skills>
             <a>academic writing</a>
             <a>speech</a>
-        </abilities>
+        </skills>
     </requirement>
 
 </requirements>
@@ -57,11 +57,11 @@
         <name>Alex</name>
         <workExp>1</workExp>
         <eduLevel>postgraduate</eduLevel>
-        <abilities>
+        <skills>
             <a>matlab</a>
             <a>excel</a>
             <a>programming</a>
-        </abilities>
+        </skills>
     </candidate>
 
     <candidate>
@@ -69,11 +69,11 @@
         <name>Alan</name>
         <workExp>2</workExp>
         <eduLevel>postgraduate</eduLevel>
-        <abilities>
+        <skills>
             <a>matlab</a>
             <a>excel</a>
             <a>system engineering</a>
-        </abilities>
+        </skills>
     </candidate>
 
     <candidate>
@@ -81,11 +81,11 @@
         <name>Black</name>
         <workExp>3</workExp>
         <eduLevel>doctor</eduLevel>
-        <abilities>
+        <skills>
             <a>matlab</a>
             <a>excel</a>
             <a>academic writing</a>
-        </abilities>
+        </skills>
     </candidate>
 
     <candidate>
@@ -93,10 +93,10 @@
         <name>Bruce</name>
         <workExp>1</workExp>
         <eduLevel>undergraduate</eduLevel>
-        <abilities>
+        <skills>
             <a>programming</a>
             <a>system engineering</a>
-        </abilities>
+        </skills>
     </candidate>
 
     <candidate>
@@ -104,11 +104,11 @@
         <name>Clay</name>
         <workExp>2</workExp>
         <eduLevel>doctor</eduLevel>
-        <abilities>
+        <skills>
             <a>excel</a>
             <a>programming</a>
             <a>system engineering</a>
-        </abilities>
+        </skills>
     </candidate>
 
     <candidate>
@@ -116,12 +116,12 @@
         <name>Tompson</name>
         <workExp>3</workExp>
         <eduLevel>doctor</eduLevel>
-        <abilities>
+        <skills>
             <a>programming</a>
             <a>system engineering</a>
             <a>academic writing</a>
             <a>speech</a>
-        </abilities>
+        </skills>
     </candidate>
 
     <candidate>
@@ -129,11 +129,11 @@
         <name>Stephen</name>
         <workExp>3</workExp>
         <eduLevel>postgraduate</eduLevel>
-        <abilities>
+        <skills>
             <a>system engineering</a>
             <a>painting</a>
             <a>drawing</a>
-        </abilities>
+        </skills>
     </candidate>
 
     <candidate>
@@ -141,10 +141,10 @@
         <name>Tom</name>
         <workExp>4</workExp>
         <eduLevel>undergraduate</eduLevel>
-        <abilities>
+        <skills>
             <a>painting</a>
             <a>drawing</a>
-        </abilities>
+        </skills>
     </candidate>
 
     <candidate>
@@ -152,11 +152,11 @@
         <name>David</name>
         <workExp>5</workExp>
         <eduLevel>postgraduate</eduLevel>
-        <abilities>
+        <skills>
             <a>painting</a>
             <a>drawing</a>
             <a>academic writing</a>
-        </abilities>
+        </skills>
     </candidate>
 
     <candidate>
@@ -164,11 +164,11 @@
         <name>Jerry</name>
         <workExp>6</workExp>
         <eduLevel>doctor</eduLevel>
-        <abilities>
+        <skills>
             <a>matlab</a>
             <a>painting</a>
             <a>drawing</a>
-        </abilities>
+        </skills>
     </candidate>
 
     <candidate>
@@ -176,10 +176,10 @@
         <name>Robert</name>
         <workExp>2</workExp>
         <eduLevel>undergraduate</eduLevel>
-        <abilities>
+        <skills>
             <a>academic writing</a>
             <a>speech</a>
-        </abilities>
+        </skills>
     </candidate>
 
     <candidate>
@@ -187,11 +187,11 @@
         <name>Boyd</name>
         <workExp>3</workExp>
         <eduLevel>postgraduate</eduLevel>
-        <abilities>
+        <skills>
             <a>drawing</a>
             <a>academic writing</a>
             <a>speech</a>
-        </abilities>
+        </skills>
     </candidate>
 
     <candidate>
@@ -199,12 +199,12 @@
         <name>Clid</name>
         <workExp>4</workExp>
         <eduLevel>postgraduate</eduLevel>
-        <abilities>
+        <skills>
             <a>matlab</a>
             <a>excel</a>
             <a>academic writing</a>
             <a>speech</a>
-        </abilities>
+        </skills>
     </candidate>
 
     <candidate>
@@ -212,12 +212,12 @@
         <name>Cirno</name>
         <workExp>3</workExp>
         <eduLevel>postgraduate</eduLevel>
-        <abilities>
+        <skills>
             <a>matlab</a>
             <a>excel</a>
             <a>academic writing</a>
             <a>programming</a>
-        </abilities>
+        </skills>
     </candidate>
 
 </candidates>
