@@ -7,6 +7,7 @@ public class Requirement {
     private int Num;
     private boolean workExperience;
     private int educationLevel;
+    private double Gpa;
     private List<String> skills;
 
     public Requirement() {
@@ -43,6 +44,9 @@ public class Requirement {
         return educationLevel;
     }
     public void setEducationLevel(int educationLevel){this.educationLevel=educationLevel;}
+    public double getGpa() {return this.Gpa;}
+
+    public void setGpa(double Id) {this.Gpa = Gpa;}
 
 }
 

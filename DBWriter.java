@@ -115,6 +115,13 @@ public class DBWriter{
         //add to parent node
         requirementEle.appendChild(rEduLevelEle);
 
+        //create element rGpa
+        Element rGpaEle = document.createElement("rGpa");
+        //set text value
+        rGpaEle.setTextContent(String.valueOf(requirement.getGpa()));
+        //add to parent node
+        requirementEle.appendChild(rGpaEle);
+
         //create element workExp
         Element skillsEle = document.createElement("skills");
         for (String s:requirement.getSkills()) {
