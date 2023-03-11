@@ -99,7 +99,11 @@ public class CandidateManagementSystem{//using Singleton Pattern
                     currentUser=admin;
                     break;
                 }                
-                case "SEARCH": {                
+                case "SEARCH": {
+                    // command: SEARCH REQ 1/2/3/...                 
+                    if(split[1]=="REQ"){
+                        Administrator.search(split[2]);
+                    }
                     break;
                 }
                 case "SAVE_SUITABLE": {

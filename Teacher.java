@@ -4,8 +4,8 @@ public class Teacher extends SuitableStaff {
     private String course;
     private double salary;
 
-    public Teacher(String name,int age,Boolean workExperience, String educationLevel, double gpa, int staffID, String trainingAppointmentTime, String course, double salary) {
-        super(name,age,workExperience, educationLevel, gpa,staffID,trainingAppointmentTime);
+    public Teacher(String name,int age,Boolean workExperience, int educationLevel, double gpa, int staffID, String trainingAppointmentTime, String course, double salary) {
+        super(name, age, workExperience, educationLevel, gpa, trainingAppointmentTime);
         this.course = course;
         this.salary = salary;
     }
