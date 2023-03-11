@@ -28,6 +28,7 @@ public class Candidate implements Comparable<Candidate> {
 
     public void setName(String name){this.name=name;}
 
+    public List<String> getSkills(){return this.skills;}
     public void setSkills(List<String> skills) {
         this.skills = skills;
     }

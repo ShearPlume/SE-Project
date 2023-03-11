@@ -72,12 +72,12 @@ public class DBReader {
         }
         return candidateList;
     }
-    public static List<Candidate> getRequirementList() throws ParserConfigurationException, IOException, SAXException {
+    public static List<Requirement> getRequirementList() throws ParserConfigurationException, IOException, SAXException {
         Document document = XMLTool.getDocument(path);
-        List<Candidate> requirementList = new ArrayList<>();
+        List<Requirement> requirementList = new ArrayList<>();
         NodeList nlist = document.getElementsByTagName("requirement");
         for (int i = 0; i < nlist.getLength(); i++) {
-            Candidate requirement = new Candidate("", 0, false, 0, 0);
+            Requirement requirement = new Requirement();
             Node node = nlist.item(i);
             if (node.getNodeType() != Node.ELEMENT_NODE) {
                 System.err.println("Error: Search node not of element type");
@@ -90,11 +90,14 @@ public class DBReader {
                 Node subnode = subNlist.item(j);
                 if (subnode.getNodeType() == Node.ELEMENT_NODE) {
                     System.out.println(subnode.getNodeName() + ":" + subnode.getTextContent());
-                    if (subnode.getNodeName().equals("cId")) {
+                    if (subnode.getNodeName().equals("rId")) {
                         requirement.setId(Integer.parseInt(subnode.getTextContent()));
                     }
-                    if (subnode.getNodeName().equals("name")) {
-                        requirement.setName(subnode.getTextContent());
+                    if (subnode.getNodeName().equals("rCourse")) {
+                        requirement.setCourse(subnode.getTextContent());
+                    }
+                    if (subnode.getNodeName().equals("rNum")) {
+                        requirement.setNum(Integer.parseInt(subnode.getTextContent()));
                     }
                     if (subnode.getNodeName().equals("workExp")) {
                         requirement.setWorkExperience(Boolean.parseBoolean(subnode.getTextContent()));
