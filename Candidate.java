@@ -19,12 +19,6 @@ public class Candidate implements Person {
         this.skills = skills;
     }
 
-
-    public ConcretePerson(String name,int age) {
-        this.name = name;
-        this.age=age;
-    }
-
     public String getName() {
         return name;
     }

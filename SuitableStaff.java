@@ -46,6 +46,6 @@ public class SuitableStaff implements Person {
 
     @Override
     public List<String> getSkills() {
-        return person.getSkills()
+        return person.getSkills();
     }
 }

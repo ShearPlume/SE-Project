@@ -10,10 +10,11 @@ public class CandidateManagementSystem{
         admin=new Administrator();
     }
     public static void main(String[] args) {
+        String filePath="Database.xml";
         CandidateManagementSystem system=new CandidateManagementSystem();
-        DBReader reader=new DBReader();
-        DBWriter writer=new DBWriter();
-        system.DB=
+        DBReader reader=new DBReader(filePath);
+        DBWriter writer=new DBWriter(filePath);
+        DataBase DB=reader.readDB();
 
     }
 
