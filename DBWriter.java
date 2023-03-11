@@ -5,6 +5,7 @@ import javax.xml.transform.TransformerException;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
@@ -55,6 +56,13 @@ public class DBWriter{
         eduLevelEle.setTextContent(String.valueOf(candidate.getEducationLevel()));
         //add to parent node
         candidateEle.appendChild(eduLevelEle);
+
+        //create element eduLevel
+        Element GpaEle = document.createElement("Gpa");
+        //set text value
+        GpaEle.setTextContent(String.valueOf(candidate.getGpa()));
+        //add to parent node
+        candidateEle.appendChild(GpaEle);
 
         //create element workExp
         Element skillsEle = document.createElement("skills");
@@ -139,6 +147,88 @@ public class DBWriter{
 
         //save xml
         XMLTool.saveXml(document, path);
+
+    }
+    public static void updateCandidate(Candidate candidate) throws TransformerException, ParserConfigurationException, IOException, SAXException {
+        Document document = XMLTool.getDocument(path);
+        Node searchNode = XMLTool.getNode(document, "candidate", String.valueOf(candidate.getId()));
+        if (searchNode != null) {
+            NodeList nlist = searchNode.getChildNodes();
+            for (int i = 0; i < nlist.getLength(); i++) {
+                Node subnode = nlist.item(i);
+                System.out.println(subnode.getNodeName() + ":" + subnode.getTextContent());
+                if (subnode.getNodeName().equals("name")) {
+                    subnode.setTextContent(candidate.getName());
+                }
+                if (subnode.getNodeName().equals("workExp")) {
+                    subnode.setTextContent(String.valueOf(candidate.getWorkExperience()));
+                }
+                if (subnode.getNodeName().equals("eduLevel")) {
+                    subnode.setTextContent(String.valueOf(candidate.getEducationLevel()));
+                }
+                if (subnode.getNodeName().equals("Gpa")) {
+                    subnode.setTextContent(String.valueOf(candidate.getEducationLevel()));
+                }
+                if (subnode.getNodeName().equals("skills")) {
+                    searchNode.removeChild(subnode);
+                    //create element workExp
+                    Element skillsEle = document.createElement("skills");
+                    for (String s : candidate.getSkills()) {
+                        Element aEle = document.createElement("a");
+                        //set text value
+                        aEle.setTextContent(s);
+                        skillsEle.appendChild(aEle);
+                    }
+                    //add to parent node
+                    searchNode.appendChild(skillsEle);
+                }
+            }
+            //save xml
+            XMLTool.saveXml(document, path);
+        }
+
+    }
+
+    public static void updateRequirement(Requirement requirement) throws TransformerException, ParserConfigurationException, IOException, SAXException {
+        Document document = XMLTool.getDocument(path);
+        Node searchNode = XMLTool.getNode(document, "requirement", String.valueOf(requirement.getId()));
+        if (searchNode != null) {
+            NodeList nlist = searchNode.getChildNodes();
+            for (int i = 0; i < nlist.getLength(); i++) {
+                Node subnode = nlist.item(i);
+                System.out.println(subnode.getNodeName() + ":" + subnode.getTextContent());
+                if (subnode.getNodeName().equals("rCourse")) {
+                    subnode.setTextContent(requirement.getCourse());
+                }
+                if (subnode.getNodeName().equals("rNum")) {
+                    subnode.setTextContent(String.valueOf(requirement.getNum()));
+                }
+                if (subnode.getNodeName().equals("rWorkExp")) {
+                    subnode.setTextContent(String.valueOf(requirement.getWorkExperience()));
+                }
+                if (subnode.getNodeName().equals("rEduLevel")) {
+                    subnode.setTextContent(String.valueOf(requirement.getEducationLevel()));
+                }
+                if (subnode.getNodeName().equals("rGpa")) {
+                    subnode.setTextContent(String.valueOf(requirement.getEducationLevel()));
+                }
+                if (subnode.getNodeName().equals("skills")) {
+                    searchNode.removeChild(subnode);
+                    //create element workExp
+                    Element skillsEle = document.createElement("skills");
+                    for (String s : requirement.getSkills()) {
+                        Element aEle = document.createElement("a");
+                        //set text value
+                        aEle.setTextContent(s);
+                        skillsEle.appendChild(aEle);
+                    }
+                    //add to parent node
+                    searchNode.appendChild(skillsEle);
+                }
+            }
+            //save xml
+            XMLTool.saveXml(document, path);
+        }
 
     }
 }

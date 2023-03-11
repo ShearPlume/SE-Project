@@ -51,7 +51,7 @@ public class Candidate implements Comparable<Candidate> {
     public double getGpa() {
         return gpa;
     }
-    public void setGpa(int gpa){this.gpa=gpa;}
+    public void setGpa(double gpa){this.gpa=gpa;}
 
     @Override
     public int compareTo(Candidate other) {

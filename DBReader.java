@@ -56,6 +56,10 @@ public class DBReader {
                     if (subnode.getNodeName().equals("eduLevel")) {
                         candidate.setEducationLevel(Integer.parseInt(subnode.getTextContent()));
                     }
+                    if (subnode.getNodeName().equals("Gpa")) {
+                        candidate.setGpa(Double.parseDouble(subnode.getTextContent()));
+                    }
+
                     if (subnode.getNodeName().equals("skills")) {
                         List<String> skillList = new ArrayList<>();
                         if (subnode.hasChildNodes()) {
