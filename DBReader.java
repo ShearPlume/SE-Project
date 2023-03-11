@@ -9,5 +9,9 @@ public class DBReader{
    {
       this.DB=DB;
    }
+   public void readFromDB()
+   {
+
+   }
 
 }

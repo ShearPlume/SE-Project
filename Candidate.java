@@ -20,6 +20,11 @@ public class Candidate {
         return name;
     }
 
+    public void setSkills(List <String> skills) {
+        this.skills=skills;
+    }
+
+
     public int getAge() {
         return age;
     }

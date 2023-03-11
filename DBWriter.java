@@ -9,6 +9,10 @@ public class DBWriter{
     {
         this.DB=DB;
     }
+    public void writeToDB()
+    {
+       
+    }
 
     
 }

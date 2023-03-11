@@ -3,7 +3,7 @@ public class ClassDirector extends User{
 
     public ClassDirector(int userID){
         // this.className = className;
-        this,userID=userID;
+        this.userID=userID;
         this.readFileAcess = false;
         this.writeFileAcess = true;
     }
