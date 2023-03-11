@@ -1,15 +1,15 @@
 import java.util.Arrays;
 import java.util.List;
 
-public class Candidate {
+public class Candidate implements Comparable<Candidate> {
     private String name;
     private int age;
     private boolean workExperience;
-    private String educationLevel;
+    private int educationLevel; // change to int by Z.Nie
     private double gpa;
     private List <String> skills;
 
-    public Candidate(String name,int age,Boolean workExperience, String educationLevel, double gpa) {
+    public Candidate(String name,int age,Boolean workExperience, int educationLevel, double gpa) {
         this.name=name;
         this.age=age;
         this.workExperience = workExperience;
@@ -33,13 +33,28 @@ public class Candidate {
         return workExperience;
     }
 
-    public String getEducationLevel() {
+    public int getEducationLevel() {
         return educationLevel;
     }
 
     public double getGpa() {
         return gpa;
     }
+
+
+    @Override
+    public int compareTo(Candidate other) {
+        int thisWorkExp = workExperience ? 1 : 0;
+        int otherWorkExp = other.workExperience ? 1 : 0;
+        if (thisWorkExp == otherWorkExp && gpa == other.gpa && educationLevel == other.educationLevel) {
+            return 0;
+        }
+        if (gpa > other.gpa && educationLevel > other.educationLevel && thisWorkExp > otherWorkExp) {
+            return 1;
+        }
+        return -1;
+    }
+
 
     @Override
     public String toString() {
@@ -52,6 +67,7 @@ public class Candidate {
     "skills: \t" + Arrays.toString(skills.toArray()) + '\n' +
     "_________________________";
     }
+
 }
 
 
