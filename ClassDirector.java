@@ -1,8 +1,9 @@
 public class ClassDirector extends User{
-    private String className;
+    // private String className;
 
-    public ClassDirector(String className){
-        this.className = className;
+    public ClassDirector(int userID){
+        // this.className = className;
+        this,userID=userID;
         this.readFileAcess = false;
         this.writeFileAcess = true;
     }

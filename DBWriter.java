@@ -4,15 +4,11 @@ import org.w3c.dom.Document;
 import java.io.File;
 
 public class DBWriter{
-    String filePath;
-    public DBWriter(String path)
+    private DataBase DB;
+    public DBWriter(DataBase DB)
     {
-       filePath=path;
+        this.DB=DB;
     }
 
-    public void writeDB()
-    {
-      
-    }
     
 }
