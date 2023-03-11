@@ -7,6 +7,7 @@
             <rNum>1</rNum><!--required staff number-->
             <rWorkExp>true</rWorkExp><!--required work experience-->
             <rEduLevel>3</rEduLevel><!--education level: doctor > postgraduate > undergraduate-->
+            <rGpa>3.0</rGpa>
             <skills><!--required skills-->
                 <a>matlab</a>
                 <a>excel</a>
@@ -19,6 +20,7 @@
             <rNum>2</rNum>
             <rWorkExp>true</rWorkExp>
             <rEduLevel>2</rEduLevel>
+            <rGpa>2.5</rGpa>
             <skills>
                 <a>programming</a>
                 <a>system engineering</a>
@@ -31,6 +33,7 @@
             <rNum>3</rNum>
             <rWorkExp>false</rWorkExp>
             <rEduLevel>1</rEduLevel>
+            <rGpa>2.6</rGpa>
             <skills>
                 <a>painting</a>
                 <a>drawing</a>
@@ -43,6 +46,7 @@
             <rNum>2</rNum>
             <rWorkExp>false</rWorkExp>
             <rEduLevel>2</rEduLevel>
+            <rGpa>3.1</rGpa>
             <skills>
                 <a>academic writing</a>
                 <a>speech</a>
@@ -57,6 +61,7 @@
             <name>Alex</name>
             <workExp>true</workExp>
             <eduLevel>1</eduLevel>
+            <Gpa>3.2</Gpa>
             <skills>
                 <a>matlab</a>
                 <a>excel</a>
@@ -69,6 +74,7 @@
             <name>Alan</name>
             <workExp>true</workExp>
             <eduLevel>1</eduLevel>
+            <Gpa>3.3</Gpa>
             <skills>
                 <a>matlab</a>
                 <a>excel</a>
@@ -81,6 +87,7 @@
             <name>Black</name>
             <workExp>false</workExp>
             <eduLevel>2</eduLevel>
+            <Gpa>3.4</Gpa>
             <skills>
                 <a>matlab</a>
                 <a>excel</a>
@@ -93,6 +100,7 @@
             <name>Bruce</name>
             <workExp>false</workExp>
             <eduLevel>3</eduLevel>
+            <Gpa>3.4</Gpa>
             <skills>
                 <a>programming</a>
                 <a>system engineering</a>
@@ -104,6 +112,7 @@
             <name>Clay</name>
             <workExp>false</workExp>
             <eduLevel>2</eduLevel>
+            <Gpa>3.5</Gpa>
             <skills>
                 <a>excel</a>
                 <a>programming</a>
@@ -116,6 +125,7 @@
             <name>Tompson</name>
             <workExp>false</workExp>
             <eduLevel>2</eduLevel>
+            <Gpa>3.3</Gpa>
             <skills>
                 <a>programming</a>
                 <a>system engineering</a>
@@ -129,6 +139,7 @@
             <name>Stephen</name>
             <workExp>true</workExp>
             <eduLevel>1</eduLevel>
+            <Gpa>3.4</Gpa>
             <skills>
                 <a>system engineering</a>
                 <a>painting</a>
@@ -141,6 +152,7 @@
             <name>Tom</name>
             <workExp>true</workExp>
             <eduLevel>1</eduLevel>
+            <Gpa>3.3</Gpa>
             <skills>
                 <a>painting</a>
                 <a>drawing</a>
@@ -152,6 +164,7 @@
             <name>David</name>
             <workExp>true</workExp>
             <eduLevel>1</eduLevel>
+            <Gpa>3.9</Gpa>
             <skills>
                 <a>painting</a>
                 <a>drawing</a>
@@ -164,6 +177,7 @@
             <name>Jerry</name>
             <workExp>true</workExp>
             <eduLevel>2</eduLevel>
+            <Gpa>3.5</Gpa>
             <skills>
                 <a>matlab</a>
                 <a>painting</a>
@@ -176,6 +190,7 @@
             <name>Robert</name>
             <workExp>true</workExp>
             <eduLevel>2</eduLevel>
+            <Gpa>3.3</Gpa>
             <skills>
                 <a>academic writing</a>
                 <a>speech</a>
@@ -187,6 +202,7 @@
             <name>Boyd</name>
             <workExp>false</workExp>
             <eduLevel>2</eduLevel>
+            <Gpa>3.6</Gpa>
             <skills>
                 <a>drawing</a>
                 <a>academic writing</a>
@@ -199,6 +215,7 @@
             <name>Clid</name>
             <workExp>false</workExp>
             <eduLevel>3</eduLevel>
+            <Gpa>4.0</Gpa>
             <skills>
                 <a>matlab</a>
                 <a>excel</a>
@@ -212,6 +229,7 @@
             <name>Cirno</name>
             <workExp>false</workExp>
             <eduLevel>2</eduLevel>
+            <Gpa>4.5</Gpa>
             <skills>
                 <a>matlab</a>
                 <a>excel</a>
