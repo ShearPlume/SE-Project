@@ -64,7 +64,7 @@ public class CandidateManagementSystem{//using Singleton Pattern
     public void commandProcessor(String command) {
         String[] split = command.split(" ");
         String cmd1 = split[0];
-        if(currentUser.getClass()== Administrator.class)
+        if(currentUser.getClass()== ClassDirector.class)
         {
             switch (cmd1) {
                 case "NEW_DIRECTOR": {
@@ -77,7 +77,7 @@ public class CandidateManagementSystem{//using Singleton Pattern
                     currentUser=directors.get(Integer.parseInt(split[1]));
                     System.out.println("existed director logged in");
                     break;
-                }                
+                }               
                 case "ENTER_REQ": {
                     if(currentUser.getClass()== ClassDirector.class)
                     {
@@ -85,27 +85,27 @@ public class CandidateManagementSystem{//using Singleton Pattern
                     }
                     break;
                 }
-                case "ARRANGE_TRAIN": {
+                case "ARRANGE_TRAINING": {
                     break;
                 }
                 default:
                 break;
             }
         }
-        else if(currentUser.getClass()== ClassDirector.class)
+        else if(currentUser.getClass()== Administrator.class)
         {
             switch (cmd1) {
                 case "LOGIN_ADMIN": {
                     currentUser=admin;
                     break;
-                }                
+                }       
                 case "SEARCH": {
                     // command: SEARCH REQ 1/2/3/...                 
                     if(split[1]=="REQ"){
                         Administrator.search(split[2]);
                     }
                     break;
-                }
+                }          
                 case "SAVE_SUITABLE": {
                     if(split[1]=="ALL")//Save result of all director to DB
                     {
