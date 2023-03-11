@@ -1,14 +1,14 @@
 import java.util.List;
 
-public class Teacher implements Person {
+public class SuitableStaff implements Person {
     private Person person;
-    private String course;
-    private int salary;
+    private int staffNum;
+    private int trainingSlot;
 
-    public Teacher(Person person,String course, int salary) {
+    public SuitableStaff(Person person, int staffNum, int trainingSlot) {
         this.person = person;
-        this.course = course;
-        this.salary = salary;
+        this.staffNum = staffNum;
+        this.trainingSlot = trainingSlot;
     }
 
     @Override
@@ -20,7 +20,15 @@ public class Teacher implements Person {
     public int getAge() {
         return person.getAge();
     }
-    
+
+    public int getStaffNum() {
+        return staffNum;
+    }
+
+    public int getTrainingSlot() {
+        return trainingSlot;
+    }
+
     @Override
     public int getYearsOfExperience() {
         return person.getYearsOfExperience();
@@ -38,16 +46,6 @@ public class Teacher implements Person {
 
     @Override
     public List<String> getSkills() {
-        return person.getSkills();
+        return person.getSkills()
     }
-
-    public String getCourse() {
-        return course;
-    }
-
-    public int getSalary() {
-        return salary;
-    }
-
-
 }
