@@ -1,51 +1,20 @@
 import java.util.List;
+public class SuitableStaff extends Candidate {
+    private int staffID;
+    private String trainingAppointmentTime;
 
-public class SuitableStaff implements Person {
-    private Person person;
-    private int staffNum;
-    private int trainingSlot;
-
-    public SuitableStaff(Person person, int staffNum, int trainingSlot) {
-        this.person = person;
-        this.staffNum = staffNum;
-        this.trainingSlot = trainingSlot;
+    public SuitableStaff(String workExperience, String educationLevel, double gpa, int staffID, String trainingAppointmentTime) {
+        super(workExperience, educationLevel, gpa);
+        this.staffID = staffID;
+        this.trainingAppointmentTime = trainingAppointmentTime;
     }
 
-    @Override
-    public String getName() {
-        return person.getName();
+    public int getStaffID() {
+        return staffID;
     }
 
-    @Override
-    public int getAge() {
-        return person.getAge();
-    }
-
-    public int getStaffNum() {
-        return staffNum;
-    }
-
-    public int getTrainingSlot() {
-        return trainingSlot;
-    }
-
-    @Override
-    public int getYearsOfExperience() {
-        return person.getYearsOfExperience();
-    }
-
-    @Override
-    public String getEducationLevel() {
-        return person.getEducationLevel();
-    }
-
-    @Override
-    public float getGPA() {
-        return person.getGPA();
-    }
-
-    @Override
-    public List<String> getSkills() {
-        return person.getSkills();
+    public String getTrainingAppointmentTime() {
+        return trainingAppointmentTime;
     }
 }
+
