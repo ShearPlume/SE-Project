@@ -55,11 +55,12 @@ public class CandidateManagementSystem{//using Singleton Pattern
        return null;
     }
 
-
+    /*
     public ArrayList<Teacher> train(ArrayList<SuitableStaff> suitableStaffs)
     {
         return null;
     }
+    */
 
     public void commandProcessor(String command) {
         String[] split = command.split(" ");
@@ -98,6 +99,10 @@ public class CandidateManagementSystem{//using Singleton Pattern
                 case "LOGIN_ADMIN": {
                     currentUser=admin;
                     break;
+                }
+                case "ALLREQ": {
+                    Administrator.seeAllRequirements();
+                    break;
                 }       
                 case "SEARCH": {
                     // YE ZHANG
@@ -119,6 +124,7 @@ public class CandidateManagementSystem{//using Singleton Pattern
                     // command: Train 24336(staff Id) 24(trainingAppointmentTime)
                     // 该命令将根据staff Id，更新XML中对应staff的训练时间属性
                     Administrator.trainStaff(split[1], split[2]);
+                    break;
                 }
                 default:{
                     System.out.println("invalid command");

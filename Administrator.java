@@ -81,11 +81,42 @@ public class Administrator extends User{
 
     }
 
-    public void getRequirements(){
-        
+    public static void seeAllRequirements(){
+        List<Requirement> reqList = null;
+        try {
+            reqList = DBReader.getRequirementList();
+        } catch (ParserConfigurationException | IOException | SAXException e) {
+            // e.printStackTrace();
+        }
+        for(Requirement req: reqList){
+            System.out.println(req.toString());
+        }
     }
 
-    public static void saveSuitableStaff(String string) {
+    public static void saveSuitableStaff(String cId) {
+        List<Candidate> cList = null;
+        Candidate chosenCandidate = null;
+        try {
+            cList = DBReader.getCandidateList();
+        } catch (ParserConfigurationException | IOException | SAXException e) {
+            // e.printStackTrace();
+        }
+        outer:
+        for(Candidate c: cList){
+            if(c.getId() == Integer.parseInt(cId)){
+                chosenCandidate = c;
+                SuitableStaff suitableStaff = new SuitableStaff(c.getId(), c.getName(), c.getWorkExperience(), c.getEducationLevel(), c.getGpa());
+                // 这部分要把上面suitableStaff相关信息写入XML ↓↓↓
+
+                // 这部分要把上面suitableStaff相关信息写入XML ↑↑↑
+                break outer;
+            }
+        }
+
+        // 这部分要把上面chosenCandidate相关信息从XML删除 ↓↓↓
+
+        // 这部分要把上面chosenCandidate相关信息从XML删除 ↑↑↑
+
     }
 
     public static void trainStaff(String staffId, String time) {
