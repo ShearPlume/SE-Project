@@ -239,4 +239,22 @@
         </candidate>
 
     </candidates>
+    <SuitableStaffs>
+    
+        <Staff>
+            <sId>24350</sId>
+            <name>Tamplate Staff</name>
+            <workExp>false</workExp>
+            <eduLevel>2</eduLevel>
+            <Gpa>4.5</Gpa>
+            <skills>
+                <a>matlab</a>
+                <a>excel</a>
+                <a>academic writing</a>
+                <a>programming</a>
+            </skills>
+            <TrainingTime>null</TrainingTime>
+        </Staff>
+    
+    </SuitableStaffs>
 </Database>

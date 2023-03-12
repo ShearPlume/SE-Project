@@ -85,4 +85,9 @@ public class Administrator extends User{
         
     }
 
+    public static void saveSuitableStaff(String string) {
+    }
+
+    public static void trainStaff(String staffId, String time) {
+    }
 }
