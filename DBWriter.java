@@ -196,9 +196,14 @@ public class DBWriter {
         // create element cId
         Element sIdEle = document.createElement("sId");
         // set text value
-        sIdEle.setTextContent(String.valueOf(staff.getId()));
+        sIdEle.setTextContent(String.valueOf(staff.getStaffId()));
         // add to parent node
         staffEle.appendChild(sIdEle);
+        Element trainedEle = document.createElement("trained");
+        // set text value
+        trainedEle.setTextContent(String.valueOf(staff.getIfTrained()));
+        // add to parent node
+        staffEle.appendChild(trainedEle);
 
         // create element name
         Element nameEle = document.createElement("name");
@@ -416,13 +421,14 @@ public class DBWriter {
                     if (subnode.getTextContent().equals(String.valueOf(ID))) {
                         Node pNode = subnode.getParentNode();
                         pNode.getParentNode().removeChild(pNode);
-                        System.out.println("delete " + subnode.getTextContent());
+                        System.out.println("delete ID" + subnode.getTextContent());
                         XMLTool.saveXml(document, path);
                         return;
                     }
 
                 }
-            }
+            }            
         }
+        System.out.println("Delete failed, could not find ID " + ID+" in tag "+TagName);
     }
 }

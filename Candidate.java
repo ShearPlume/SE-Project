@@ -10,7 +10,10 @@ public class Candidate implements Comparable<Candidate> {
     private double gpa;
     private List<String> skills;
 
-    public Candidate(Candidate c){
+    // public Candidate(Candidate c){
+    // }
+
+    public Candidate(){
     }
 
     public Candidate(String name, Boolean workExperience, int educationLevel, double gpa) {
@@ -88,7 +91,7 @@ public class Candidate implements Comparable<Candidate> {
     @Override
     public String toString() {
         String result = "";
-        return  "--------------------------" + "\n" +
+        return  "--------------------------\nCandidate" + "\n" +
                 "Id: \t\t" + Id + "\n" +
                 "Name: \t\t" + name + '\n' +
                 "HasWorkExp? \t" + workExperience + '\n' +

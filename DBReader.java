@@ -15,7 +15,7 @@ import java.util.List;
 public class DBReader {
     private static DataBase DB;
 
-    private static String path = System.getProperty("user.dir")+"\\Database.xml";
+    private static String path = System.getProperty("user.dir") + "\\Database.xml";
 
     public DBReader(DataBase DB) {
         this.DB = DB;
@@ -25,7 +25,76 @@ public class DBReader {
 
     }
 
+    public static SuitableStaff getSpecificStaff(int ID) {
+        Document document = DB.getDoc();
+        Node pNode = null;
+        NodeList nlist = document.getElementsByTagName("Staff");
+        SuitableStaff staff = new SuitableStaff(0, false, "", false, 0, 0);
+        for (int i = 0; i < nlist.getLength(); i++) {
+            Node node = nlist.item(i);
+            if (node.getNodeType() != Node.ELEMENT_NODE) {
+                System.err.println("Error: Search node not of element type");
+                System.exit(22);
+            }
+            NodeList sublist = node.getChildNodes();
+            for (int j = 0; j < sublist.getLength(); j++) {
+                Node subnode = sublist.item(j);
+                if (subnode.getNodeType() == Node.ELEMENT_NODE) {
+                    if (subnode.getTextContent().equals(String.valueOf(ID))) {
+                        pNode = subnode.getParentNode();
+                        NodeList list = pNode.getChildNodes();
+                        for (int k = 0; k < list.getLength(); k++) {
+                            subnode = sublist.item(k);
+                            if (subnode.getNodeType() == Node.ELEMENT_NODE) {
+                                // System.out.println(subnode.getNodeName() + ":" + subnode.getTextContent());
+                                if (subnode.getNodeName().equals("sId")) {
+                                    staff.setSID(Integer.parseInt(subnode.getTextContent()));
+                                }
+                                if (subnode.getNodeName().equals("name")) {
+                                    staff.setName(subnode.getTextContent());
+                                }
+                                if (subnode.getNodeName().equals("workExp")) {
+                                    staff.setWorkExperience(Boolean.parseBoolean(subnode.getTextContent()));
+                                }
+                                if (subnode.getNodeName().equals("eduLevel")) {
+                                    staff.setEducationLevel(Integer.parseInt(subnode.getTextContent()));
+                                }
+                                if (subnode.getNodeName().equals("Gpa")) {
+                                    staff.setGpa(Double.parseDouble(subnode.getTextContent()));
+                                }
+                                if (subnode.getNodeName().equals("trained")) {
+                                    staff.setIftrained(Boolean.parseBoolean(subnode.getTextContent()));
+                                }
 
+                                if (subnode.getNodeName().equals("skills")) {
+                                    List<String> skillList = new ArrayList<>();
+                                    if (subnode.hasChildNodes()) {
+                                        NodeList skillNlist = subnode.getChildNodes();
+                                        for (int o = 0; o < skillNlist.getLength(); o++) {
+                                            if (subnode.getNodeType() == Node.ELEMENT_NODE) {
+                                                Node skillNode = skillNlist.item(o);
+                                                if (skillNode.getNodeName().equals("a")) {
+                                                    skillList.add(skillNode.getTextContent());
+                                                }
+                                            }
+                                        }
+                                    }
+                                    staff.setSkills(skillList);
+                                }
+                            }
+
+
+                        }
+                        return staff;
+                    }
+
+                }
+            }
+
+        }
+        System.out.println("get failed, could not find a staff with ID " + ID);
+        return null;
+    }
 
     public static List<Candidate> getCandidateList() throws ParserConfigurationException, IOException, SAXException {
         // Document document = XMLTool.getDocument(path);
@@ -40,12 +109,12 @@ public class DBReader {
                 System.exit(22);
             }
 
-            System.out.println(node.getNodeName());
+            // System.out.println(node.getNodeName());
             NodeList subNlist = node.getChildNodes();
             for (int j = 0; j < subNlist.getLength(); j++) {
                 Node subnode = subNlist.item(j);
                 if (subnode.getNodeType() == Node.ELEMENT_NODE) {
-                    System.out.println(subnode.getNodeName() + ":" + subnode.getTextContent());
+                    // System.out.println(subnode.getNodeName() + ":" + subnode.getTextContent());
                     if (subnode.getNodeName().equals("cId")) {
                         candidate.setId(Integer.parseInt(subnode.getTextContent()));
                     }
@@ -69,7 +138,7 @@ public class DBReader {
                             for (int o = 0; o < skillNlist.getLength(); o++) {
                                 if (subnode.getNodeType() == Node.ELEMENT_NODE) {
                                     Node skillNode = skillNlist.item(o);
-                                    if(skillNode.getNodeName().equals("a")) {
+                                    if (skillNode.getNodeName().equals("a")) {
                                         skillList.add(skillNode.getTextContent());
                                     }
                                 }
@@ -83,7 +152,9 @@ public class DBReader {
         }
         return candidateList;
     }
-    public static List<Requirement> getRequirementList() throws ParserConfigurationException, IOException, SAXException {
+
+    public static List<Requirement> getRequirementList()
+            throws ParserConfigurationException, IOException, SAXException {
         // Document document = XMLTool.getDocument(path);
         Document document = DB.getDoc();
         List<Requirement> requirementList = new ArrayList<>();
@@ -96,12 +167,12 @@ public class DBReader {
                 System.exit(22);
             }
 
-            System.out.println(node.getNodeName());
+            // System.out.println(node.getNodeName());
             NodeList subNlist = node.getChildNodes();
             for (int j = 0; j < subNlist.getLength(); j++) {
                 Node subnode = subNlist.item(j);
                 if (subnode.getNodeType() == Node.ELEMENT_NODE) {
-                    System.out.println(subnode.getNodeName() + ":" + subnode.getTextContent());
+                    // System.out.println(subnode.getNodeName() + ":" + subnode.getTextContent());
                     if (subnode.getNodeName().equals("rId")) {
                         requirement.setId(Integer.parseInt(subnode.getTextContent()));
                     }
@@ -128,7 +199,7 @@ public class DBReader {
                             for (int o = 0; o < skillNlist.getLength(); o++) {
                                 if (subnode.getNodeType() == Node.ELEMENT_NODE) {
                                     Node skillNode = skillNlist.item(o);
-                                    if(skillNode.getNodeName().equals("a")) {
+                                    if (skillNode.getNodeName().equals("a")) {
                                         skillList.add(skillNode.getTextContent());
                                     }
                                 }

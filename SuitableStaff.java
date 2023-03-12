@@ -13,12 +13,18 @@ public class SuitableStaff extends Candidate {
         super(c.getName(), c.getWorkExperience(), c.getEducationLevel(), c.getGpa());
         this.staffId = staffId;
         this.ifTrained=ifTrained;
+        this.setSkills(c.getSkills());
     }
 
     public int getStaffId() {
         return staffId;
     }
 
+
+    public void setSID(int sid)
+    {
+        staffId=sid;
+    }
     public void setIftrained(boolean change)
     {
         ifTrained=change;
@@ -30,5 +36,12 @@ public class SuitableStaff extends Candidate {
         return ifTrained;
     }
 
+    @Override
+    public String toString() {
+        // String result = "";
+        return  "**************************\nStaff\n"+super.toString()+"\nstaffID: \t" + staffId + '\n' +"trained? \t" + ifTrained + '\n' +
+        "**************************";
+
+    }
 }
 

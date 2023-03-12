@@ -67,6 +67,38 @@ public class XMLTool {
 
     //endregion
     //region add
+    public static void addStudent(Document document, String tagName, String Name, int Age, String Major, String path) throws TransformerException {
+        NodeList nodeList = document.getElementsByTagName(tagName);
+        Element student = document.createElement("student");
+
+        //create element Name
+        Element nameEle = document.createElement("Name");
+        //set text value
+        nameEle.setTextContent(Name);
+        //add to parent node
+        student.appendChild(nameEle);
+
+        //create element Age
+        Element ageEle = document.createElement("Age");
+        //set text value
+        ageEle.setTextContent(String.valueOf(Age));
+        //add to parent node
+        student.appendChild(ageEle);
+
+        //create element Major
+        Element majorEle = document.createElement("Major");
+        //set text value
+        majorEle.setTextContent(Major);
+        //add to parent node
+        student.appendChild(majorEle);
+
+        //add to parent node
+        nodeList.item(0).appendChild(student);
+
+        //save xml
+        saveXml(document, path);
+
+    }
 
     //endregion
     //region delete
@@ -135,4 +167,35 @@ public class XMLTool {
         System.out.println("Save to " + path);
     }
 
+    private void printlnCommon(Node n) {
+        System.out.print(" nodeName=\"" + n.getNodeName() + "\"");
+
+        String val = n.getNamespaceURI();
+        if (val != null) {
+            System.out.print(" uri=\"" + val + "\"");
+        }
+
+        val = n.getPrefix();
+
+        if (val != null) {
+            System.out.print(" pre=\"" + val + "\"");
+        }
+
+        val = n.getLocalName();
+        if (val != null) {
+            System.out.print(" local=\"" + val + "\"");
+        }
+
+        val = n.getNodeValue();
+        if (val != null) {
+            System.out.print(" nodeValue=");
+            if (val.trim().equals("")) {
+                // Whitespace
+                System.out.print("[WS]");
+            } else {
+                System.out.print("\"" + n.getNodeValue() + "\"");
+            }
+        }
+        System.out.println();
+    }
 }

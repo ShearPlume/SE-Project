@@ -1,13 +1,21 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><!--Ye Zhang added on 9/Mar/2023--><!--3.10YFK改了一点东西，把两个库夹在一个Database里要不然不识别根--><Database>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!--Ye
+Zhang added on 9/Mar/2023--><!--3.10YFK改了一点东西，把两个库夹在一个Database里要不然不识别根-->
+<Database>
     <requirements>
         <requirement>
-            <rId>1</rId><!--requirement ID-->
-            <rCourse>Math</rCourse><!--requirement course-->
-            <rNum>1</rNum><!--required staff number-->
-            <rWorkExp>true</rWorkExp><!--required work experience-->
-            <rEduLevel>3</rEduLevel><!--education level: doctor > postgraduate > undergraduate-->
+            <rId>1</rId><!--requirement
+            ID-->
+            <rCourse>Math</rCourse><!--requirement
+            course-->
+            <rNum>1</rNum><!--required
+            staff number-->
+            <rWorkExp>true</rWorkExp><!--required
+            work experience-->
+            <rEduLevel>3</rEduLevel><!--education
+            level: doctor > postgraduate > undergraduate-->
             <rGpa>3.0</rGpa>
-            <skills><!--required skills-->
+            <skills><!--required
+                skills-->
                 <a>matlab</a>
                 <a>excel</a>
             </skills>
@@ -54,6 +62,19 @@
 
     </requirements>
     <candidates>
+
+        <candidate>
+            <cId>24336</cId>
+            <name>Franklin</name>
+            <workExp>true</workExp>
+            <eduLevel>1</eduLevel>
+            <Gpa>3.2</Gpa>
+            <skills>
+                <a1>matlab</a1>
+                <a2>excel</a2>
+                <a3>programming</a3>
+            </skills>
+        </candidate>
 
         <candidate>
             <cId>24336</cId>
@@ -223,7 +244,6 @@
             </skills>
         </candidate>
 
-
         <candidate>
             <cId>24349</cId>
             <name>Cirno</name>
@@ -237,9 +257,11 @@
                 <a>programming</a>
             </skills>
         </candidate>
-    <candidate><cId>0</cId><name>John Wick</name><workExp>true</workExp><eduLevel>2</eduLevel><Gpa>99.99</Gpa><skills><a>eat</a><a>sleep</a><a>play</a></skills></candidate><candidate><cId>0</cId><name>John Wick</name><workExp>true</workExp><eduLevel>2</eduLevel><Gpa>99.99</Gpa><skills><a>eat</a><a>sleep</a><a>play</a></skills></candidate></candidates>
+
+
+    </candidates>
     <SuitableStaffs>
-    
+
         <Staff>
             <sId>24350</sId>
             <trained>false</trained>
@@ -254,6 +276,18 @@
                 <a>programming</a>
             </skills>
         </Staff>
-    
+        <Staff>
+            <sId>10001</sId>
+            <trained>false</trained>
+            <name>John Wick</name>
+            <workExp>true</workExp>
+            <eduLevel>2</eduLevel>
+            <Gpa>99.99</Gpa>
+            <skills>
+                <a>eat</a>
+                <a>sleep</a>
+                <a>play</a>
+            </skills>
+        </Staff>
     </SuitableStaffs>
 </Database>
