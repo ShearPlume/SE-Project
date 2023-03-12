@@ -13,7 +13,7 @@ import org.xml.sax.SAXException;
 import java.io.IOException;
 
 public class DBWriter {
-    private static String path = "/Database.xml";
+    private static String path = "\\Database.xml";
     private static DataBase DB;
 
     public DBWriter(DataBase DB) {
@@ -101,7 +101,7 @@ public class DBWriter {
     }
 
     public static void addRequirement(Requirement requirement)
-            throws TransformerException, ParserConfigurationException, IOException, SAXException {
+            throws TransformerException {
         // Document document = XMLTool.getDocument(path);
         Document document = DB.getDoc();
         NodeList nodeList = document.getElementsByTagName("requirements");
@@ -249,7 +249,7 @@ public class DBWriter {
     }
 
     public static void updateCandidate(Candidate candidate)
-            throws TransformerException, ParserConfigurationException, IOException, SAXException {
+            throws TransformerException {
         // Document document = XMLTool.getDocument(path);
         Document document = DB.getDoc();
         Node searchNode = XMLTool.getNode(document, "candidate", String.valueOf(candidate.getId()));
@@ -291,7 +291,7 @@ public class DBWriter {
     }
 
     public static void updateStaff(SuitableStaff staff)
-            throws TransformerException, ParserConfigurationException, IOException, SAXException {
+            throws TransformerException {
         // Document document = XMLTool.getDocument(path);
         Document document = DB.getDoc();
         Node searchNode = XMLTool.getNode(document, "Staff", String.valueOf(staff.getStaffId()));
@@ -350,7 +350,7 @@ public class DBWriter {
     }
 
     public static void updateRequirement(Requirement requirement)
-            throws TransformerException, ParserConfigurationException, IOException, SAXException {
+            throws TransformerException{
         // Document document = XMLTool.getDocument(path);
         Document document = DB.getDoc();
         Node searchNode = XMLTool.getNode(document, "requirement", String.valueOf(requirement.getId()));
@@ -392,5 +392,37 @@ public class DBWriter {
             XMLTool.saveXml(document, path);
         }
 
+    }
+
+    /**
+     *
+     * @param ID
+     * @param TagName
+     * "candidate" "requirement" “Staff”
+     */
+    public static  void deleteXML(int ID,String TagName) throws TransformerException {
+        Document document = DB.getDoc();
+        NodeList nlist = document.getElementsByTagName(TagName);
+        for (int i = 0; i < nlist.getLength(); i++) {
+            Node node = nlist.item(i);
+            if (node.getNodeType() != Node.ELEMENT_NODE) {
+                System.err.println("Error: Search node not of element type");
+                System.exit(22);
+            }
+            NodeList sublist = node.getChildNodes();
+            for (int j = 0; j < sublist.getLength(); j++) {
+                Node subnode = sublist.item(j);
+                if (subnode.getNodeType() == Node.ELEMENT_NODE) {
+                    if (subnode.getTextContent().equals(String.valueOf(ID))) {
+                        Node pNode = subnode.getParentNode();
+                        pNode.getParentNode().removeChild(pNode);
+                        System.out.println("delete " + subnode.getTextContent());
+                        XMLTool.saveXml(document, path);
+                        return;
+                    }
+
+                }
+            }
+        }
     }
 }

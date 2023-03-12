@@ -66,7 +66,12 @@ public class DBReader {
                         if (subnode.hasChildNodes()) {
                             NodeList skillNlist = subnode.getChildNodes();
                             for (int o = 0; o < skillNlist.getLength(); o++) {
-                                skillList.add(subNlist.item(j).getTextContent());
+                                if (subnode.getNodeType() == Node.ELEMENT_NODE) {
+                                    Node skillNode = skillNlist.item(o);
+                                    if(skillNode.getNodeName().equals("a")) {
+                                        skillList.add(skillNode.getTextContent());
+                                    }
+                                }
                             }
                         }
                         candidate.setSkills(skillList);
@@ -117,10 +122,15 @@ public class DBReader {
 
                     if (subnode.getNodeName().equals("skills")) {
                         List<String> skillList = new ArrayList<>();
-                        if(subnode.hasChildNodes()) {
+                        if (subnode.hasChildNodes()) {
                             NodeList skillNlist = subnode.getChildNodes();
-                            for (int o = 0; o < skillNlist.getLength(); o++){
-                                skillList.add(subNlist.item(j).getTextContent());
+                            for (int o = 0; o < skillNlist.getLength(); o++) {
+                                if (subnode.getNodeType() == Node.ELEMENT_NODE) {
+                                    Node skillNode = skillNlist.item(o);
+                                    if(skillNode.getNodeName().equals("a")) {
+                                        skillList.add(skillNode.getTextContent());
+                                    }
+                                }
                             }
                         }
                         requirement.setSkills(skillList);
