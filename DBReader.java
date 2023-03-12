@@ -31,7 +31,7 @@ public class DBReader {
         List<Candidate> candidateList = new ArrayList<>();
         NodeList nlist = document.getElementsByTagName("candidate");
         for (int i = 0; i < nlist.getLength(); i++) {
-            Candidate candidate = new Candidate("", 0, false, 0, 0);
+            Candidate candidate = new Candidate("", false, 0, 0);
             Node node = nlist.item(i);
             if (node.getNodeType() != Node.ELEMENT_NODE) {
                 System.err.println("Error: Search node not of element type");

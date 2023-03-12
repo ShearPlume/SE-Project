@@ -4,7 +4,7 @@ public class SuitableStaff extends Candidate {
     private String trainingAppointmentTime;
 
     public SuitableStaff(String name,int age,Boolean workExperience, int educationLevel, double gpa, String trainingAppointmentTime) {
-        super(name, age, workExperience, educationLevel, gpa);
+        super(name, workExperience, educationLevel, gpa);
         this.staffID = staffID;
         this.trainingAppointmentTime = trainingAppointmentTime;
     }

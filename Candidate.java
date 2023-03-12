@@ -4,7 +4,7 @@ import java.util.List;
 public class Candidate implements Comparable<Candidate> {
     private int Id;
     private String name;
-    private int age;
+    // private int age;
     private boolean workExperience;
     private int educationLevel; // change to int by Z.Nie
     private double gpa;
@@ -14,9 +14,9 @@ public class Candidate implements Comparable<Candidate> {
 
     }
 
-    public Candidate(String name, int age, Boolean workExperience, int educationLevel, double gpa) {
+    public Candidate(String name, Boolean workExperience, int educationLevel, double gpa) {
         this.name = name;
-        this.age = age;
+        // this.age = age;
         this.workExperience = workExperience;
         this.educationLevel = educationLevel;
         this.gpa = gpa;
@@ -37,12 +37,13 @@ public class Candidate implements Comparable<Candidate> {
         this.skills = skills;
     }
 
-
+    /*
     public int getAge() {
         return age;
     }
     public void setAge(int age) {this.age = age;}
-
+    */
+    
     public boolean getWorkExperience() {
         return workExperience;
     }
