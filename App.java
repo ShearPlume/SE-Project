@@ -14,8 +14,9 @@ public class App {
         c.setSkills(Arrays.asList("eat", "sleep", "play"));
         List<Candidate> cList=DBReader.getCandidateList();
         List<Requirement> rList=DBReader.getRequirementList();
-        DBWriter.deleteXML(24349,"candidate");
         DBWriter.addCandidate(c);
+        DBWriter.deleteXML(24349,"candidate");
+
         System.out.println(c.toString());
         //other tasks with the CandidateManagementSystem as needed
 

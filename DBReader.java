@@ -14,7 +14,8 @@ import java.util.List;
 
 public class DBReader {
     private static DataBase DB;
-    private static String path = "/Database.xml";
+
+    private static String path = System.getProperty("user.dir")+"\\Database.xml";
 
     public DBReader(DataBase DB) {
         this.DB = DB;

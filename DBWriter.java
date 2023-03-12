@@ -13,7 +13,7 @@ import org.xml.sax.SAXException;
 import java.io.IOException;
 
 public class DBWriter {
-    private static String path = "\\Database.xml";
+    private static String path = System.getProperty("user.dir")+"\\Database.xml";
     private static DataBase DB;
 
     public DBWriter(DataBase DB) {

@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!--Ye Zhang added on 9/Mar/2023--><!--3.10YFK改了一点东西，把两个库夹在一个Database里要不然不识别根-->
-<Database>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!--Ye Zhang added on 9/Mar/2023--><!--3.10YFK改了一点东西，把两个库夹在一个Database里要不然不识别根--><Database>
     <requirements>
         <requirement>
             <rId>1</rId><!--requirement ID-->
@@ -224,6 +223,7 @@
             </skills>
         </candidate>
 
+
         <candidate>
             <cId>24349</cId>
             <name>Cirno</name>
@@ -237,8 +237,7 @@
                 <a>programming</a>
             </skills>
         </candidate>
-
-    </candidates>
+    <candidate><cId>0</cId><name>John Wick</name><workExp>true</workExp><eduLevel>2</eduLevel><Gpa>99.99</Gpa><skills><a>eat</a><a>sleep</a><a>play</a></skills></candidate><candidate><cId>0</cId><name>John Wick</name><workExp>true</workExp><eduLevel>2</eduLevel><Gpa>99.99</Gpa><skills><a>eat</a><a>sleep</a><a>play</a></skills></candidate></candidates>
     <SuitableStaffs>
     
         <Staff>
