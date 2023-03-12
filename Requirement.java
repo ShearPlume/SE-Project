@@ -4,7 +4,7 @@ import java.util.List;
 public class Requirement {
     private int Id;
     private String course;
-    private int num;
+    private final int num=1;
     private boolean workExperience;
     private int educationLevel;
     private double gpa;
@@ -31,6 +31,7 @@ public class Requirement {
 
     public String toString(){
         return  "--------------------------" + "\n" +
+                "Request\n"+
                 "Req Id: \t\t" + Id + "\n" +
                 "Course: \t\t" + course + '\n' +
                 "Num Required: \t" + num + '\n' +
@@ -44,7 +45,7 @@ public class Requirement {
     public int getNum() {
         return num;
     }
-    public void setNum(int num) {this.num = num;}
+    // public void setNum(int num) {this.num = num;}
 
     public boolean getWorkExperience() {
         return workExperience;
@@ -57,7 +58,7 @@ public class Requirement {
     public void setEducationLevel(int educationLevel){this.educationLevel=educationLevel;}
     public double getGpa() {return this.gpa;}
 
-    public void setGpa(double Id) {this.gpa = gpa;}
+    public void setGpa(double gpa) {this.gpa = gpa;}
 
 }
 

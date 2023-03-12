@@ -196,8 +196,8 @@ public class DBWriter {
         // create element cId
         Element sIdEle = document.createElement("sId");
         // set text value
-        sIdEle.setTextContent(String.valueOf(staff.getStaffId()));
-        // add to parent node
+        sIdEle.setTextContent(String.valueOf(staff.getId()));
+        // // add to parent node
         staffEle.appendChild(sIdEle);
         Element trainedEle = document.createElement("trained");
         // set text value
@@ -299,7 +299,7 @@ public class DBWriter {
             throws TransformerException {
         // Document document = XMLTool.getDocument(path);
         Document document = DB.getDoc();
-        Node searchNode = XMLTool.getNode(document, "Staff", String.valueOf(staff.getStaffId()));
+        Node searchNode = XMLTool.getNode(document, "Staff", String.valueOf(staff.getId()));
         // <Staff>
         //     <sId>24350</sId>
         //     <trained>false</trained>

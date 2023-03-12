@@ -277,7 +277,20 @@ Zhang added on 9/Mar/2023--><!--3.10YFK改了一点东西，把两个库夹在�
             </skills>
         </Staff>
         <Staff>
-            <sId>10001</sId>
+            <sId>100</sId>
+            <trained>false</trained>
+            <name>John Wick</name>
+            <workExp>true</workExp>
+            <eduLevel>2</eduLevel>
+            <Gpa>99.99</Gpa>
+            <skills>
+                <a>eat</a>
+                <a>sleep</a>
+                <a>play</a>
+            </skills>
+        </Staff>
+        <Staff>
+            <sId>100</sId>
             <trained>false</trained>
             <name>John Wick</name>
             <workExp>true</workExp>

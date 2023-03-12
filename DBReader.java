@@ -25,11 +25,10 @@ public class DBReader {
 
     }
 
-    public static SuitableStaff getSpecificStaff(int ID) {
+    public static Object getSpecificObject(int ID,String TagName) {
         Document document = DB.getDoc();
         Node pNode = null;
-        NodeList nlist = document.getElementsByTagName("Staff");
-        SuitableStaff staff = new SuitableStaff(0, false, "", false, 0, 0);
+        NodeList nlist = document.getElementsByTagName(TagName);        
         for (int i = 0; i < nlist.getLength(); i++) {
             Node node = nlist.item(i);
             if (node.getNodeType() != Node.ELEMENT_NODE) {
@@ -43,49 +42,163 @@ public class DBReader {
                     if (subnode.getTextContent().equals(String.valueOf(ID))) {
                         pNode = subnode.getParentNode();
                         NodeList list = pNode.getChildNodes();
-                        for (int k = 0; k < list.getLength(); k++) {
-                            subnode = sublist.item(k);
-                            if (subnode.getNodeType() == Node.ELEMENT_NODE) {
-                                // System.out.println(subnode.getNodeName() + ":" + subnode.getTextContent());
-                                if (subnode.getNodeName().equals("sId")) {
-                                    staff.setSID(Integer.parseInt(subnode.getTextContent()));
-                                }
-                                if (subnode.getNodeName().equals("name")) {
-                                    staff.setName(subnode.getTextContent());
-                                }
-                                if (subnode.getNodeName().equals("workExp")) {
-                                    staff.setWorkExperience(Boolean.parseBoolean(subnode.getTextContent()));
-                                }
-                                if (subnode.getNodeName().equals("eduLevel")) {
-                                    staff.setEducationLevel(Integer.parseInt(subnode.getTextContent()));
-                                }
-                                if (subnode.getNodeName().equals("Gpa")) {
-                                    staff.setGpa(Double.parseDouble(subnode.getTextContent()));
-                                }
-                                if (subnode.getNodeName().equals("trained")) {
-                                    staff.setIftrained(Boolean.parseBoolean(subnode.getTextContent()));
-                                }
+                        switch(TagName)
+                        {
+                            case "requirement":{
+                                Requirement req=new Requirement();
+                                for (int k = 0; k < list.getLength(); k++) {
+                                    subnode = sublist.item(k);
 
-                                if (subnode.getNodeName().equals("skills")) {
-                                    List<String> skillList = new ArrayList<>();
-                                    if (subnode.hasChildNodes()) {
-                                        NodeList skillNlist = subnode.getChildNodes();
-                                        for (int o = 0; o < skillNlist.getLength(); o++) {
-                                            if (subnode.getNodeType() == Node.ELEMENT_NODE) {
-                                                Node skillNode = skillNlist.item(o);
-                                                if (skillNode.getNodeName().equals("a")) {
-                                                    skillList.add(skillNode.getTextContent());
+                                    // <rId>1</rId><!--requirement
+                                    // ID-->
+                                    // <rCourse>Math</rCourse><!--requirement
+                                    // course-->
+                                    // <rNum>1</rNum><!--required
+                                    // staff number-->
+                                    // <rWorkExp>true</rWorkExp><!--required
+                                    // work experience-->
+                                    // <rEduLevel>3</rEduLevel><!--education
+                                    // level: doctor > postgraduate > undergraduate-->
+                                    // <rGpa>3.0</rGpa>
+                                    // <skills><!--required
+                                    //     skills-->
+                                    //     <a>matlab</a>
+                                    //     <a>excel</a>
+                                    // </skills>
+                                    if (subnode.getNodeType() == Node.ELEMENT_NODE) {
+                                        // System.out.println(subnode.getNodeName() + ":" + subnode.getTextContent());
+                                        if (subnode.getNodeName().equals("rId")) {
+                                            req.setId(Integer.parseInt(subnode.getTextContent()));
+                                        }
+                                        if (subnode.getNodeName().equals("course")) {
+                                            req.setCourse(subnode.getTextContent());
+                                        }
+                                        if (subnode.getNodeName().equals("rWorkExp")) {
+                                            req.setWorkExperience(Boolean.parseBoolean(subnode.getTextContent()));
+                                        }
+                                        if (subnode.getNodeName().equals("level")) {
+                                            req.setEducationLevel(Integer.parseInt(subnode.getTextContent()));
+                                        }
+                                        if (subnode.getNodeName().equals("rGpa")) {
+                                            req.setGpa(Double.parseDouble(subnode.getTextContent()));
+                                        }
+        
+                                        if (subnode.getNodeName().equals("skills")) {
+                                            List<String> skillList = new ArrayList<>();
+                                            if (subnode.hasChildNodes()) {
+                                                NodeList skillNlist = subnode.getChildNodes();
+                                                for (int o = 0; o < skillNlist.getLength(); o++) {
+                                                    if (subnode.getNodeType() == Node.ELEMENT_NODE) {
+                                                        Node skillNode = skillNlist.item(o);
+                                                        if (skillNode.getNodeName().equals("a")) {
+                                                            skillList.add(skillNode.getTextContent());
+                                                        }
+                                                    }
                                                 }
                                             }
+                                            req.setSkills(skillList);
                                         }
                                     }
-                                    staff.setSkills(skillList);
+        
+        
                                 }
+                                return req;
+                            }
+                            case "candidate":{
+                                Candidate can=new Candidate("", false,0, 0);
+                                for (int k = 0; k < list.getLength(); k++) {
+                                    subnode = sublist.item(k);
+                                    if (subnode.getNodeType() == Node.ELEMENT_NODE) {
+                                        // System.out.println(subnode.getNodeName() + ":" + subnode.getTextContent());
+                                        if (subnode.getNodeName().equals("cId")) {
+                                            can.setId(Integer.parseInt(subnode.getTextContent()));
+                                        }
+                                        if (subnode.getNodeName().equals("name")) {
+                                            can.setName(subnode.getTextContent());
+                                        }
+                                        if (subnode.getNodeName().equals("workExp")) {
+                                            can.setWorkExperience(Boolean.parseBoolean(subnode.getTextContent()));
+                                        }
+                                        if (subnode.getNodeName().equals("eduLevel")) {
+                                            can.setEducationLevel(Integer.parseInt(subnode.getTextContent()));
+                                        }
+                                        if (subnode.getNodeName().equals("Gpa")) {
+                                            can.setGpa(Double.parseDouble(subnode.getTextContent()));
+                                        }
+        
+                                        if (subnode.getNodeName().equals("skills")) {
+                                            List<String> skillList = new ArrayList<>();
+                                            if (subnode.hasChildNodes()) {
+                                                NodeList skillNlist = subnode.getChildNodes();
+                                                for (int o = 0; o < skillNlist.getLength(); o++) {
+                                                    if (subnode.getNodeType() == Node.ELEMENT_NODE) {
+                                                        Node skillNode = skillNlist.item(o);
+                                                        if (skillNode.getNodeName().equals("a")) {
+                                                            skillList.add(skillNode.getTextContent());
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            can.setSkills(skillList);
+                                        }
+                                    }
+        
+        
+                                }
+                                return can;
+
+                            }
+                            case "Staff":
+                            {
+                                SuitableStaff staff = new SuitableStaff(false, "", false, 0, 0);
+                                for (int k = 0; k < list.getLength(); k++) {
+                                    subnode = sublist.item(k);
+                                    if (subnode.getNodeType() == Node.ELEMENT_NODE) {
+                                        // System.out.println(subnode.getNodeName() + ":" + subnode.getTextContent());
+                                        if (subnode.getNodeName().equals("sId")) {
+                                            staff.setId(Integer.parseInt(subnode.getTextContent()) );
+                                        }
+                                        if (subnode.getNodeName().equals("name")) {
+                                            staff.setName(subnode.getTextContent());
+                                        }
+                                        if (subnode.getNodeName().equals("workExp")) {
+                                            staff.setWorkExperience(Boolean.parseBoolean(subnode.getTextContent()));
+                                        }
+                                        if (subnode.getNodeName().equals("eduLevel")) {
+                                            staff.setEducationLevel(Integer.parseInt(subnode.getTextContent()));
+                                        }
+                                        if (subnode.getNodeName().equals("Gpa")) {
+                                            staff.setGpa(Double.parseDouble(subnode.getTextContent()));
+                                        }
+                                        if (subnode.getNodeName().equals("trained")) {
+                                            staff.setIftrained(Boolean.parseBoolean(subnode.getTextContent()));
+                                        }
+        
+                                        if (subnode.getNodeName().equals("skills")) {
+                                            List<String> skillList = new ArrayList<>();
+                                            if (subnode.hasChildNodes()) {
+                                                NodeList skillNlist = subnode.getChildNodes();
+                                                for (int o = 0; o < skillNlist.getLength(); o++) {
+                                                    if (subnode.getNodeType() == Node.ELEMENT_NODE) {
+                                                        Node skillNode = skillNlist.item(o);
+                                                        if (skillNode.getNodeName().equals("a")) {
+                                                            skillList.add(skillNode.getTextContent());
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            staff.setSkills(skillList);
+                                        }
+                                    }
+        
+        
+                                }
+                                return staff;
                             }
 
-
                         }
-                        return staff;
+                        
+
                     }
 
                 }
@@ -178,9 +291,6 @@ public class DBReader {
                     }
                     if (subnode.getNodeName().equals("rCourse")) {
                         requirement.setCourse(subnode.getTextContent());
-                    }
-                    if (subnode.getNodeName().equals("rNum")) {
-                        requirement.setNum(Integer.parseInt(subnode.getTextContent()));
                     }
                     if (subnode.getNodeName().equals("workExp")) {
                         requirement.setWorkExperience(Boolean.parseBoolean(subnode.getTextContent()));

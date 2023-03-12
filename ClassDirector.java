@@ -60,7 +60,7 @@ public class ClassDirector extends User{
                 //TODO：need DBwriter send ID
 
                 requirement.setCourse(course);
-                requirement.setNum(num);
+                // requirement.setNum(num);
                 requirement.setWorkExperience(workExperience);
                 requirement.setEducationLevel(educationLevel);
                 requirement.setGpa(Gpa);
