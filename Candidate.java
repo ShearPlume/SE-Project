@@ -11,7 +11,6 @@ public class Candidate implements Comparable<Candidate> {
     private List<String> skills;
 
     public Candidate(Candidate c){
-        this=c;
     }
 
     public Candidate(String name, Boolean workExperience, int educationLevel, double gpa) {
@@ -20,6 +19,13 @@ public class Candidate implements Comparable<Candidate> {
         this.workExperience = workExperience;
         this.educationLevel = educationLevel;
         this.gpa = gpa;
+    }
+    //for template staff
+    public Candidate( Boolean workExperience, int educationLevel, double gpa, List<String> skills) {
+        this.workExperience = workExperience;
+        this.educationLevel = educationLevel;
+        this.gpa = gpa;
+        this.skills=skills;
     }
 
     public int getId() {return this.Id;}

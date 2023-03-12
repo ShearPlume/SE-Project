@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
 
 import org.xml.sax.SAXException;
 
@@ -53,12 +54,8 @@ public class Administrator extends User{
             }
         }
 
-        // make candidate tamplate
-        Candidate tempCandidate = new Candidate(); // work-exp, edu-level, gpa, skills
-        tempCandidate.setEducationLevel(thisReq.getEducationLevel());
-        tempCandidate.setWorkExperience(thisReq.getWorkExperience());
-        tempCandidate.setGpa(thisReq.getGpa());
-        tempCandidate.setSkills(thisReq.getSkills());
+        // make candidate tamplate: work-exp, edu-level, gpa, skills
+        Candidate tempCandidate = new Candidate(thisReq.getWorkExperience(),thisReq.getEducationLevel(),thisReq.getGpa(),thisReq.getSkills());
 
         for(Candidate candidate: cList){
             if(candidate.compareTo(tempCandidate) == 1){
@@ -76,10 +73,6 @@ public class Administrator extends User{
         }
         
     }
-    
-    public void writeToDatabase(){
-
-    }
 
     public static void seeAllRequirements(){
         List<Requirement> reqList = null;
@@ -94,22 +87,25 @@ public class Administrator extends User{
     }
 
     public static void saveSuitableStaff(String cId) {
-        List<Candidate> cList = null;
+        List<Candidate> allCandidats = null;
         Candidate chosenCandidate = null;
         try {
-            cList = DBReader.getCandidateList();
+            allCandidats = DBReader.getCandidateList();
         } catch (ParserConfigurationException | IOException | SAXException e) {
             // e.printStackTrace();
         }
         outer:
-        for(Candidate c: cList){
+        for(Candidate c: allCandidats){
             if(c.getId() == Integer.parseInt(cId)){
                 chosenCandidate = c;
                 int sID=c.getId()+1000;
                 SuitableStaff suitableStaff = new SuitableStaff(sID, false,c.getName(), c.getWorkExperience(), c.getEducationLevel(), c.getGpa());
-                //int staffId, String name, Boolean workExperience, String trainingAppointmentTime,int educationLevel, double gpa
-                // 这部分要把上面suitableStaff相关信息写入XML ↓↓↓
-
+                // write suitableStaff to DBWriter
+                try {
+                    DBWriter.addSuitableStaff(suitableStaff);
+                } catch (ParserConfigurationException | IOException | SAXException | TransformerException e) {
+                    // e.printStackTrace();
+                }
                 // 这部分要把上面suitableStaff相关信息写入XML ↑↑↑
                 break outer;
             }

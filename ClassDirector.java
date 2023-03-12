@@ -13,20 +13,19 @@ public class ClassDirector extends User{
 
 
         public static void writeToDatabase(){
-    /*
-    <requirement>
-            <rId>1</rId><!--requirement ID-->
-            <rCourse>Math</rCourse><!--requirement course-->
-            <rNum>1</rNum><!--required staff number-->
-            <rWorkExp>true</rWorkExp><!--required work experience-->
-            <rEduLevel>3</rEduLevel><!--education level: doctor > postgraduate > undergraduate-->
-            <rGpa>3.0</rGpa>
-            <skills><!--required skills-->
-                <a>matlab</a>
-                <a>excel</a>
-            </skills>
-        </requirement>
-     */
+
+//            Scanner s=new Scanner(System.in);
+//            String line;
+//            List<String> requirementList=null;
+//            try {
+//                while (s.hasNextLine()){
+//                    line=s.nextLine();
+//                    requirementList.add(line);
+//                }
+//            }catch (NullPointerException e){
+//                // e.printStackTrace();
+//            }
+
             try {
                 System.out.println("Please enter your requirement course:");
                 Scanner s1 = new Scanner(System.in);
