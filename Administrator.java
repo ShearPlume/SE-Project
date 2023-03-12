@@ -13,7 +13,7 @@ public class Administrator extends User{
         this.userID = userID;
         // admin can read requirements but cannot write requirements
         this.readFileAcess = true;
-        this.writeFileAcess = false;
+        this.writeFileAcess = true;
     }
     /*
     <requirement>
@@ -106,12 +106,12 @@ public class Administrator extends User{
                 } catch (ParserConfigurationException | IOException | SAXException | TransformerException e) {
                     // e.printStackTrace();
                 }
-                // 这部分要把上面suitableStaff相关信息写入XML ↑↑↑
                 break outer;
             }
         }
 
         // 这部分要把上面chosenCandidate相关信息从XML删除 ↓↓↓
+        //TODO:writer delete
 
         // 这部分要把上面chosenCandidate相关信息从XML删除 ↑↑↑
 
