@@ -10,8 +10,8 @@ public class Candidate implements Comparable<Candidate> {
     private double gpa;
     private List<String> skills;
 
-    public Candidate(){
-
+    public Candidate(Candidate c){
+        this=c;
     }
 
     public Candidate(String name, Boolean workExperience, int educationLevel, double gpa) {

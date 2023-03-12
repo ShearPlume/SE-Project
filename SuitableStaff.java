@@ -9,6 +9,12 @@ public class SuitableStaff extends Candidate {
         this.ifTrained=ifTrained;
     }
 
+    public SuitableStaff(int staffId, Boolean ifTrained,Candidate c) {
+        super(c.getName(), c.getWorkExperience(), c.getEducationLevel(), c.getGpa());
+        this.staffId = staffId;
+        this.ifTrained=ifTrained;
+    }
+
     public int getStaffId() {
         return staffId;
     }
