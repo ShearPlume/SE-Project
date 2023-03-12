@@ -5,7 +5,7 @@ public class Teacher extends Candidate {
     private double salary;
     private int staffID;
 
-    public Teacher(String name,int age,Boolean workExperience, int educationLevel, double gpa, int staffID,  String course, double salary) {
+    public Teacher(String name,Boolean workExperience, int educationLevel, double gpa, int staffID,  String course, double salary) {
         super(name, workExperience, educationLevel, gpa);
         this.course = course;
         this.staffID=staffID;

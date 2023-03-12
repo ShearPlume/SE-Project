@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Vector;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
@@ -55,12 +54,11 @@ public class CandidateManagementSystem{//using Singleton Pattern
        return null;
     }
 
-    /*
+
     public ArrayList<Teacher> train(ArrayList<SuitableStaff> suitableStaffs)
     {
         return null;
     }
-    */
 
     public void commandProcessor(String command) {
         String[] split = command.split(" ");
@@ -99,31 +97,22 @@ public class CandidateManagementSystem{//using Singleton Pattern
                 case "LOGIN_ADMIN": {
                     currentUser=admin;
                     break;
-                }
-                case "ALLREQ": {
-                    Administrator.seeAllRequirements();
-                    break;
                 }       
                 case "SEARCH": {
-                    // YE ZHANG
-                    // command: SEARCH REQ 1/2/3/(requirement Id)...                 
+                    // command: SEARCH REQ 1/2/3/...                 
                     if(split[1]=="REQ"){
                         Administrator.search(split[2]);
                     }
                     break;
                 }          
                 case "SAVE_SUITABLE": {
-                    // YE ZHANG
-                    // command: SAVE_SUITABLE 24336(candidate Id)
-                    // 该命令将根据candidate Id，删除XML中对应的candidate，写入XML中的SuitableStaff
-                    Administrator.saveSuitableStaff(split[1]);
-                    break;
-                }
-                case "Train": {
-                    // YE ZHANG
-                    // command: Train 24336(staff Id) 24(trainingAppointmentTime)
-                    // 该命令将根据staff Id，更新XML中对应staff的训练时间属性
-                    Administrator.trainStaff(split[1], split[2]);
+                    if(split[1]=="ALL")//Save result of all director to DB
+                    {
+
+                    }
+                    else{
+                        int directorNum=Integer.parseInt(split[1]);//Save result of specific director to DB
+                    }
                     break;
                 }
                 default:{

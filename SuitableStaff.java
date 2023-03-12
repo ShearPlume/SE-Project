@@ -15,7 +15,7 @@ public class SuitableStaff extends Candidate {
 
     public void setIftrained(boolean change)
     {
-        ifTrained=change
+        ifTrained=change;
     }
 
 
