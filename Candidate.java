@@ -81,14 +81,14 @@ public class Candidate implements Comparable<Candidate> {
     @Override
     public String toString() {
         String result = "";
-        return  "_________________________" + "\n" +
+        return  "--------------------------" + "\n" +
                 "Id: \t\t" + Id + "\n" +
                 "Name: \t\t" + name + '\n' +
                 "HasWorkExp? \t" + workExperience + '\n' +
                 "Edu Level: \t" + educationLevel + '\n' +
                 "GPA: \t\t" + gpa + '\n' +
                 "Skills: \t" + Arrays.toString(skills.toArray()) + '\n' +
-                "_________________________";
+                "--------------------------";
     }
 
 }

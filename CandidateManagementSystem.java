@@ -100,7 +100,8 @@ public class CandidateManagementSystem{//using Singleton Pattern
                     break;
                 }       
                 case "SEARCH": {
-                    // command: SEARCH REQ 1/2/3/...                 
+                    // YE ZHANG
+                    // command: SEARCH REQ 1/2/3/(requirement Id)...                 
                     if(split[1]=="REQ"){
                         Administrator.search(split[2]);
                     }
