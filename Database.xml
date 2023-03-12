@@ -243,6 +243,7 @@
     
         <Staff>
             <sId>24350</sId>
+            <trained>false</trained>
             <name>Tamplate Staff</name>
             <workExp>false</workExp>
             <eduLevel>2</eduLevel>
@@ -253,7 +254,6 @@
                 <a>academic writing</a>
                 <a>programming</a>
             </skills>
-            <TrainingTime>null</TrainingTime>
         </Staff>
     
     </SuitableStaffs>

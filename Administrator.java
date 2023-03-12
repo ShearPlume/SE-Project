@@ -105,7 +105,9 @@ public class Administrator extends User{
         for(Candidate c: cList){
             if(c.getId() == Integer.parseInt(cId)){
                 chosenCandidate = c;
-                SuitableStaff suitableStaff = new SuitableStaff(c.getId(), c.getName(), c.getWorkExperience(), c.getEducationLevel(), c.getGpa());
+                int sID=c.getId()+1000;
+                SuitableStaff suitableStaff = new SuitableStaff(sID, false,c.getName(), c.getWorkExperience(), c.getEducationLevel(), c.getGpa());
+                //int staffId, String name, Boolean workExperience, String trainingAppointmentTime,int educationLevel, double gpa
                 // 这部分要把上面suitableStaff相关信息写入XML ↓↓↓
 
                 // 这部分要把上面suitableStaff相关信息写入XML ↑↑↑

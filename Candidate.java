@@ -2,7 +2,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Candidate implements Comparable<Candidate> {
-    private int Id;
+    // private int Id;
     private String name;
     // private int age;
     private boolean workExperience;
@@ -22,9 +22,9 @@ public class Candidate implements Comparable<Candidate> {
         this.gpa = gpa;
     }
 
-    public int getId() {return this.Id;}
+    // public int getId() {return this.Id;}
 
-    public void setId(int Id) {this.Id = Id;}
+    // public void setId(int Id) {this.Id = Id;}
 
     public String getName() {
         return name;
@@ -83,7 +83,7 @@ public class Candidate implements Comparable<Candidate> {
     public String toString() {
         String result = "";
         return  "--------------------------" + "\n" +
-                "Id: \t\t" + Id + "\n" +
+                // "Id: \t\t" + Id + "\n" +
                 "Name: \t\t" + name + '\n' +
                 "HasWorkExp? \t" + workExperience + '\n' +
                 "Edu Level: \t" + educationLevel + '\n' +

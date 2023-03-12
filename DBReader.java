@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DBReader {
-    private DataBase DB;
+    private static DataBase DB;
     private static String path = "/Database.xml";
 
     public DBReader(DataBase DB) {
@@ -27,7 +27,8 @@ public class DBReader {
 
 
     public static List<Candidate> getCandidateList() throws ParserConfigurationException, IOException, SAXException {
-        Document document = XMLTool.getDocument(path);
+        // Document document = XMLTool.getDocument(path);
+        Document document = DB.getDoc();
         List<Candidate> candidateList = new ArrayList<>();
         NodeList nlist = document.getElementsByTagName("candidate");
         for (int i = 0; i < nlist.getLength(); i++) {
@@ -77,7 +78,8 @@ public class DBReader {
         return candidateList;
     }
     public static List<Requirement> getRequirementList() throws ParserConfigurationException, IOException, SAXException {
-        Document document = XMLTool.getDocument(path);
+        // Document document = XMLTool.getDocument(path);
+        Document document = DB.getDoc();
         List<Requirement> requirementList = new ArrayList<>();
         NodeList nlist = document.getElementsByTagName("requirement");
         for (int i = 0; i < nlist.getLength(); i++) {
