@@ -6,7 +6,7 @@ public class Candidate implements Comparable<Candidate> {
     private String name;
     // private int age;
     private boolean workExperience;
-    private int educationLevel; // change to int by Z.Nie
+    private int educationLevel;
     private double gpa;
     private List<String> skills;
 
@@ -74,7 +74,7 @@ public class Candidate implements Comparable<Candidate> {
     //    if (thisWorkExp == otherWorkExp && gpa == other.gpa && educationLevel == other.educationLevel) {
     //        return 0;
     //    }
-        if (gpa >= other.gpa && educationLevel >= other.educationLevel && thisWorkExp >= otherWorkExp) {
+        if (gpa >= other.gpa && educationLevel == other.educationLevel && thisWorkExp == otherWorkExp) {
             for(String skill: other.skills){
                 if(!skills.contains(skill)){
                     // this candidate does not have ordered skill

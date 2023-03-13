@@ -62,7 +62,7 @@ public class Administrator extends User{
         tempCandidate.setSkills(thisReq.getSkills());
 
         for(Candidate candidate: cList){
-            if(candidate.compareTo(tempCandidate) == 1){
+            if(candidate.compareTo(tempCandidate) > 0){
                 resulList.add(candidate);
                 if(resulList.size() == thisReq.getNum()){
                     break;
