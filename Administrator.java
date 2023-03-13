@@ -13,7 +13,7 @@ public class Administrator extends User{
         this.userID = userID;
         // admin can read requirements but cannot write requirements
         this.readFileAcess = true;
-        this.writeFileAcess = false;
+        this.writeFileAcess = true;
     }
     /*
     <requirement>
@@ -113,7 +113,7 @@ public class Administrator extends User{
                 break ;
             }
         }
-        // delete this chosenCandidate in xml candidates
+        // delete this chosenCandidate from xml candidates
         try {
             DBWriter.deleteXML(Integer.parseInt(cId),"candidate");
         } catch (TransformerException e) {
