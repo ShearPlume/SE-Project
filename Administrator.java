@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
 
 import org.xml.sax.SAXException;
 
@@ -76,10 +77,6 @@ public class Administrator extends User{
         }
         
     }
-    
-    public void writeToDatabase(){
-
-    }
 
     public static void seeAllRequirements(){
         List<Requirement> reqList = null;
@@ -101,24 +98,27 @@ public class Administrator extends User{
         } catch (ParserConfigurationException | IOException | SAXException e) {
             // e.printStackTrace();
         }
-        outer:
+
         for(Candidate c: cList){
             if(c.getId() == Integer.parseInt(cId)){
                 chosenCandidate = c;
                 // int sID=c.getId()+1000;
                 SuitableStaff suitableStaff = new SuitableStaff(false,c.getName(), c.getWorkExperience(), c.getEducationLevel(), c.getGpa());
-                //int staffId, String name, Boolean workExperience, String trainingAppointmentTime,int educationLevel, double gpa
-                // 这部分要把上面suitableStaff相关信息写入XML ↓↓↓
-
-                // 这部分要把上面suitableStaff相关信息写入XML ↑↑↑
-                break outer;
+                // write suitableStaff to DBWriter
+                try {
+                    DBWriter.addSuitableStaff(suitableStaff);
+                } catch (ParserConfigurationException | IOException | SAXException |TransformerException e) {
+                    // e.printStackTrace();
+                }
+                break ;
             }
         }
-
-        // 这部分要把上面chosenCandidate相关信息从XML删除 ↓↓↓
-
-        // 这部分要把上面chosenCandidate相关信息从XML删除 ↑↑↑
-
+        // delete this chosenCandidate in xml candidates
+        try {
+            DBWriter.deleteXML(Integer.parseInt(cId),"candidate");
+        } catch (TransformerException e) {
+            // e.printStackTrace();
+        }
     }
 
     public static void trainStaff(String staffId, String time) {
