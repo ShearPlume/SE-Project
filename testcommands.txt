@@ -1,0 +1,18 @@
+        <requirement>
+            <rId>3</rId>
+            <rCourse>Art</rCourse>
+            <rNum>3</rNum>
+            <rWorkExp>false</rWorkExp>
+            <rEduLevel>1</rEduLevel>
+            <rGpa>2.6</rGpa>
+            <skills>
+                <a>painting</a>
+                <a>drawing</a>
+            </skills>
+        </requirement>
+
+science
+true
+2
+50
+eat,move,fly

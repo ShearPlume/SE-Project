@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
@@ -13,16 +14,31 @@ public class CandidateManagementSystem{//using Singleton Pattern
     private User currentUser;
     ArrayList<ClassDirector> directors;
     Administrator admin;
+    ClassDirector currentDir;
 
     // Private constructor to prevent other classes from creating instances
     private CandidateManagementSystem() {
         // Connect to the database using an XML file
         admin=new Administrator(0);
         currentUser=admin;//default user is admin
+        currentDir=null;
         directors=new ArrayList<>();
         DB=getDatabaseConnection("Database.xml");
         reader=new DBReader(DB);
         writer=new DBWriter(DB);
+    }
+
+    public void start()
+    {
+        Scanner s1=new Scanner(System.in);
+        System.out.println("pls enter command or change user");
+        while(s1.hasNextLine())
+        {
+            
+            commandProcessor(s1.nextLine());
+            System.out.println("pls enter command or change user");
+        }
+        
     }
 
     // Public static method to return the singleton instance of the class
@@ -55,9 +71,15 @@ public class CandidateManagementSystem{//using Singleton Pattern
     }
 
 
-    public ArrayList<Teacher> train(ArrayList<SuitableStaff> suitableStaffs)
+    public void train(ArrayList<SuitableStaff> suitableStaffs)
     {
-        return null;
+        return;
+    }
+
+    public void train(int sID)
+    {
+        
+        return;
     }
 
     public void commandProcessor(String command) {
@@ -68,23 +90,33 @@ public class CandidateManagementSystem{//using Singleton Pattern
             switch (cmd1) {
                 case "NEW_DIRECTOR": {
                     directors.add(new ClassDirector(directors.size()+1));
-                    currentUser=directors.get(directors.size());
+                    currentDir=directors.get(directors.size());
+                    currentUser=currentDir;
                     System.out.println("new director logged in");
                     break;
                 }
                 case "LOGIN_DIRECTOR": {
-                    currentUser=directors.get(Integer.parseInt(split[1]));
+                    currentDir=directors.get(Integer.parseInt(split[1]));
+                    currentUser=currentDir;
                     System.out.println("existed director logged in");
                     break;
-                }               
+                }   
+                case "LOGIN_ADMIN": {
+                    currentUser=admin;
+                    System.out.println("admin logged in");
+                    break;
+                }              
                 case "ENTER_REQ": {
                     if(currentUser.getClass()== ClassDirector.class)
-                    {
-    
+                    {     
+                        System.out.println("enter requests line by line, use commas to seprate multiple skills");
+                        currentDir.writeReqToDatabase();   
                     }
                     break;
                 }
                 case "ARRANGE_TRAINING": {
+                    int staffID=Integer.parseInt(split[1]);
+                    train(null);
                     break;
                 }
                 default:
@@ -93,17 +125,40 @@ public class CandidateManagementSystem{//using Singleton Pattern
         }
         else if(currentUser.getClass()== Administrator.class)
         {
-            switch (cmd1) {
-                case "LOGIN_ADMIN": {
-                    currentUser=admin;
+            switch (cmd1) {  
+                case "NEW_DIRECTOR": {
+                    directors.add(new ClassDirector(directors.size()+1));
+                    currentDir=directors.get(directors.size()-1);
+                    currentUser=currentDir;
+                    System.out.println("new director logged in");
                     break;
-                }       
-                case "SEARCH": {
-                    // command: SEARCH REQ 1/2/3/...                 
-                    if(split[1]=="REQ"){
-                        Administrator.search(split[2]);
+                }
+                case "LOGIN_DIRECTOR": {
+                    try {
+                        currentDir=directors.get(Integer.parseInt(split[1]));
+                    currentUser=currentDir;
+                    System.out.println("existed director logged in");
+                        
+                    } catch (Exception e) {
+                        // TODO: handle exception
+                        System.out.println("invalid command");
                     }
+                    
                     break;
+                }
+                case "SHOW_REQLIST":{
+                    admin.seeAllRequirements();
+                    break;
+                }     
+                case "SEARCH": {
+                    // command: SEARCH 1/2/3/...                 
+                    try {
+                        Administrator.search(split[1]);
+                        
+                    } catch (Exception e) {
+                        // TODO: handle exception
+                        System.out.println("invalid command");
+                    }
                 }          
                 case "SAVE_SUITABLE": {
                     if(split[1]=="ALL")//Save result of all director to DB
@@ -111,7 +166,9 @@ public class CandidateManagementSystem{//using Singleton Pattern
 
                     }
                     else{
-                        int directorNum=Integer.parseInt(split[1]);//Save result of specific director to DB
+                        admin.saveSuitableStaff(split[1]);//Save result of specific director to DB
+
+                        // int directorNum=Integer.parseInt(split[1]);
                     }
                     break;
                 }

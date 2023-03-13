@@ -4,16 +4,17 @@ import java.util.List;
 import java.util.Scanner;
 public class ClassDirector extends User{
     // private String className;
-
+    ArrayList<Integer>reqList;
     public ClassDirector(int userID){
         // this.className = className;
         this.userID=userID;
         this.readFileAcess = false;
         this.writeFileAcess = true;
+        reqList=new ArrayList<>();
     }
 
 
-        public static void writeToDatabase(){
+        public void writeReqToDatabase(){
         //input requirements
             Scanner s=new Scanner(System.in);
             String course="";
@@ -21,6 +22,7 @@ public class ClassDirector extends User{
             int educationLevel=0;
             double Gpa=0.0;
             List<String> skills = new ArrayList<>();
+
             try {
                 course=s.nextLine();
                 workExperience = Boolean.parseBoolean(s.nextLine());
@@ -44,12 +46,13 @@ public class ClassDirector extends User{
             //set all requirements in Database
             Requirement requirement = new Requirement();
             //TODO：need DBwriter send ID
-
+            requirement.setId(this.userID*100+reqList.size()+1);
             requirement.setCourse(course);
             requirement.setWorkExperience(workExperience);
             requirement.setEducationLevel(educationLevel);
             requirement.setGpa(Gpa);
             requirement.setSkills(skills);
+            reqList.add(requirement.getId());
             try {
                 DBWriter.addRequirement(requirement);
             } catch (TransformerException e) {

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><!--Ye
-Zhang added on 9/Mar/2023--><!--3.10YFK改了一点东西，把两个库夹在一个Database里要不然不识别根-->
-<Database>
+Zhang added on 9/Mar/2023--><!--3.10YFK改了一点东西，把两个库夹在一个Database里要不然不识别根--><Database>
     <requirements>
         <requirement>
             <rId>1</rId><!--requirement
@@ -63,18 +62,7 @@ Zhang added on 9/Mar/2023--><!--3.10YFK改了一点东西，把两个库夹在�
     </requirements>
     <candidates>
 
-        <candidate>
-            <cId>24336</cId>
-            <name>Franklin</name>
-            <workExp>true</workExp>
-            <eduLevel>1</eduLevel>
-            <Gpa>3.2</Gpa>
-            <skills>
-                <a1>matlab</a1>
-                <a2>excel</a2>
-                <a3>programming</a3>
-            </skills>
-        </candidate>
+        
 
         <candidate>
             <cId>24336</cId>
