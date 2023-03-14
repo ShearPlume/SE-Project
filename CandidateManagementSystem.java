@@ -80,15 +80,21 @@ public class CandidateManagementSystem{//using Singleton Pattern
             switch (cmd1) {
                 case "NEW_DIRECTOR": {
                     directors.add(new ClassDirector(directors.size()+1));
-                    currentDir=directors.get(directors.size());
+                    currentDir=directors.get(directors.size()-1);
                     currentUser=currentDir;
                     System.out.println("new director logged in");
                     break;
                 }
                 case "LOGIN_DIRECTOR": {
-                    currentDir=directors.get(Integer.parseInt(split[1]));
+                    try {
+                        currentDir=directors.get(Integer.parseInt(split[1]));
                     currentUser=currentDir;
                     System.out.println("existed director logged in");
+                        
+                    } catch (Exception e) {
+                        // TODO: handle exception
+                        System.out.println("invalid command");
+                    }
                     break;
                 }   
                 case "LOGIN_ADMIN": {
