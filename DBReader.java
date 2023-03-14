@@ -21,9 +21,6 @@ public class DBReader {
         this.DB = DB;
     }
 
-    public void readFromDB() {
-
-    }
 
     public static Object getSpecificObject(int ID,String TagName) {
         Document document = DB.getDoc();

@@ -20,9 +20,6 @@ public class DBWriter {
         this.DB = DB;
     }
 
-    public void writeToDB() {
-
-    }
 
     public static void addCandidate(Candidate candidate)
             throws ParserConfigurationException, IOException, SAXException, TransformerException {

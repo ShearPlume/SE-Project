@@ -1,0 +1,148 @@
+@startuml
+class App{
+    +main()
+}
+
+class  CandidateManagementSystem{
+    -DataBase DB
+    -DBReader reader
+    -DBWriter writer
+    -User currentUser
+    -List users
+    -ArrayList<ClassDirector> directors
+    -Administrator admin
+    -ClassDirector currentDir
+
+    +CandidateManagementSystem getInstance()
+    +DataBase getDatabaseConnection(String path)
+    +void commandProcessor(String command)
+}
+class           User{
+    -int userID
+    -boolean readFileAcess
+    -boolean writeFileAcess
+    +int getID()
+}
+class           XMLYool{
+    -final String outputEncoding = "UTF-8"
+    +Document getDocument(String Path)
+    +Node getNode(Document document, String TagName, String str)
+    +void addStudent(Document document, String tagName, String Name, int Age, String Major, String path)
+    +void deleteNode(Document document, String TagName, String str, String path)
+    +void updateNode(Document document, String TagName, String str, String updateStr, String path)
+    +void saveXml(Document document, String path)
+    +printlnCommon(Node n)
+}   
+
+class           Requirement{
+    -int Id
+    -String course
+    -final int num=1
+    -boolean workExperience
+    -int educationLevel
+    -double gpa
+    -List<String> skills
+    + int getId()
+    +void setId(int Id)
+    +String getCourse()
+    +void setCourse(String course)
+    +List<String> getSkills()
+    +void setSkills(List<String> skills)
+    +String toString()
+    +int getNum()
+    +boolean getWorkExperience()
+    +void setWorkExperience(boolean workExperience)
+    +int getEducationLevel() 
+    + void setEducationLevel(int educationLevel)
+    +double getGpa()
+    + void setGpa(double gpa) 
+
+
+}
+
+class           Candidate{
+    -int Id
+    -String name
+    -boolean workExperience
+    -int educationLevel
+    -Float gpa
+    -List<String> skills
+    +int getId()
+    +void setId(int Id)
+    +String getName()
+    +void setName(String name)
+    +boolean getWorkExperience()
+    +void setWorkExperience(boolean workExperience)
+    + String getEducationLevel()
+    +void setEducationLevel(int educationLevel)
+    +double getGpa()
+    +int compareTo(Candidate other)
+    +void setGpa(double gpa)
+    +String toString()
+}
+
+class           SuitableStaff{
+    -boolean ifTrained
+    +void setIftrained(boolean change)
+    +boolean getIfTrained()
+    +String toString()
+
+}
+
+
+class           ClassDirector{
+    -ArrayList<Integer>reqList
+    +void trainStaff(ArrayList<SuitableStaff> suitableStaffs)
+    +void trainStaff(int sID)
+    +void writeReqToDatabase()
+}
+class           Administrator{
+    +Administrator(int userID)
+    +void seeAllRequirements()
+    +void seeAllCandidates()
+    +void seeAllStaffs()
+    +void saveSuitableStaff(int rID,int cId)
+    +getRequirements():List
+}
+
+class           DBWriter     {
+    -String path
+    -DataBase DB
+    +void addCandidate(Candidate candidate)
+    +void addRequirement(Requirement requirement)
+    +void addSuitableStaff(SuitableStaff staff)
+    +void updateCandidate(Candidate candidate)
+    +void updateStaff(SuitableStaff staff)
+    +void deleteXML(int ID,String TagName)
+
+}
+class           DBReader     {
+    -String path
+    -DataBase DB
+    + Object getSpecificObject(int ID,String 
+    +List<Requirement> getRequirementList()
+    +List<SuitableStaff> getStaffList() 
+
+}
+class           DataBase{
+
+    -Document doc;
+    +Document getDoc()
+}
+
+
+App*--CandidateManagementSystem
+CandidateManagementSystem *-- DataBase
+DataBase o-- Candidate
+User <|-- Administrator
+User <|-- ClassDirector
+ClassDirector<--Administrator
+Candidate <|--SuitableStaff
+' SuitableStaff <|--Teacher
+CandidateManagementSystem <-- User
+DBReader     <.. Administrator
+DBWriter<.. Administrator
+DBWriter<.. ClassDirector
+DataBase<.. DBReader
+DataBase<.. DBWriter
+@enduml
