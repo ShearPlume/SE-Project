@@ -70,13 +70,13 @@ public class DBReader {
                                         if (subnode.getNodeName().equals("rId")) {
                                             req.setId(Integer.parseInt(subnode.getTextContent()));
                                         }
-                                        if (subnode.getNodeName().equals("course")) {
+                                        if (subnode.getNodeName().equals("rCourse")) {
                                             req.setCourse(subnode.getTextContent());
                                         }
                                         if (subnode.getNodeName().equals("rWorkExp")) {
                                             req.setWorkExperience(Boolean.parseBoolean(subnode.getTextContent()));
                                         }
-                                        if (subnode.getNodeName().equals("level")) {
+                                        if (subnode.getNodeName().equals("rEduLevel")) {
                                             req.setEducationLevel(Integer.parseInt(subnode.getTextContent()));
                                         }
                                         if (subnode.getNodeName().equals("rGpa")) {
@@ -292,10 +292,10 @@ public class DBReader {
                     if (subnode.getNodeName().equals("rCourse")) {
                         requirement.setCourse(subnode.getTextContent());
                     }
-                    if (subnode.getNodeName().equals("workExp")) {
+                    if (subnode.getNodeName().equals("rWorkExp")) {
                         requirement.setWorkExperience(Boolean.parseBoolean(subnode.getTextContent()));
                     }
-                    if (subnode.getNodeName().equals("eduLevel")) {
+                    if (subnode.getNodeName().equals("rEduLevel")) {
                         requirement.setEducationLevel(Integer.parseInt(subnode.getTextContent()));
                     }
                     if (subnode.getNodeName().equals("rGpa")) {
@@ -323,5 +323,80 @@ public class DBReader {
         }
         return requirementList;
     }
+    public static List<SuitableStaff> getStaffList() throws ParserConfigurationException, IOException, SAXException {
+        // Document document = XMLTool.getDocument(path);
+        Document document = DB.getDoc();
+        List<SuitableStaff> staffList = new ArrayList<>();
+        NodeList nlist = document.getElementsByTagName("Staff");
+        for (int i = 0; i < nlist.getLength(); i++) {
+            SuitableStaff staff = new SuitableStaff( false,"",false, 0, 0);//Boolean ifTrained, String name, Boolean workExperience,int educationLevel, double gpa
+            Node node = nlist.item(i);
+            if (node.getNodeType() != Node.ELEMENT_NODE) {
+                System.err.println("Error: Search node not of element type");
+                System.exit(22);
+            }
+
+        //     <Staff>
+        //     <sId>24350</sId>
+        //     <trained>false</trained>
+        //     <name>Tamplate Staff</name>
+        //     <workExp>false</workExp>
+        //     <eduLevel>2</eduLevel>
+        //     <Gpa>4.5</Gpa>
+        //     <skills>
+        //         <a>matlab</a>
+        //         <a>excel</a>
+        //         <a>academic writing</a>
+        //         <a>programming</a>
+        //     </skills>
+        // </Staff>
+
+            // System.out.println(node.getNodeName());
+            NodeList subNlist = node.getChildNodes();
+            for (int j = 0; j < subNlist.getLength(); j++) {
+                Node subnode = subNlist.item(j);
+                if (subnode.getNodeType() == Node.ELEMENT_NODE) {
+                    // System.out.println(subnode.getNodeName() + ":" + subnode.getTextContent());
+                    if (subnode.getNodeName().equals("sId")) {
+                        staff.setId(Integer.parseInt(subnode.getTextContent()));
+                    }
+                    if (subnode.getNodeName().equals("trained")) {
+                        staff.setIftrained(Boolean.parseBoolean(subnode.getTextContent()));
+                    }
+                    if (subnode.getNodeName().equals("name")) {
+                        staff.setName(subnode.getTextContent());
+                    }
+                    if (subnode.getNodeName().equals("workExp")) {
+                        staff.setWorkExperience(Boolean.parseBoolean(subnode.getTextContent()));
+                    }
+                    if (subnode.getNodeName().equals("eduLevel")) {
+                        staff.setEducationLevel(Integer.parseInt(subnode.getTextContent()));
+                    }
+                    if (subnode.getNodeName().equals("Gpa")) {
+                        staff.setGpa(Double.parseDouble(subnode.getTextContent()));
+                    }
+
+                    if (subnode.getNodeName().equals("skills")) {
+                        List<String> skillList = new ArrayList<>();
+                        if (subnode.hasChildNodes()) {
+                            NodeList skillNlist = subnode.getChildNodes();
+                            for (int o = 0; o < skillNlist.getLength(); o++) {
+                                if (subnode.getNodeType() == Node.ELEMENT_NODE) {
+                                    Node skillNode = skillNlist.item(o);
+                                    if (skillNode.getNodeName().equals("a")) {
+                                        skillList.add(skillNode.getTextContent());
+                                    }
+                                }
+                            }
+                        }
+                        staff.setSkills(skillList);
+                    }
+                }
+            }
+            staffList.add(staff);
+        }
+        return staffList;
+    }
+
 
 }

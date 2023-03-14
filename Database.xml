@@ -8,9 +8,9 @@ Zhang added on 9/Mar/2023--><!--3.10YFK改了一点东西，把两个库夹在�
             course-->
             <rNum>1</rNum><!--required
             staff number-->
-            <rWorkExp>true</rWorkExp><!--required
+            <rWorkExp>false</rWorkExp><!--required
             work experience-->
-            <rEduLevel>3</rEduLevel><!--education
+            <rEduLevel>2</rEduLevel><!--education
             level: doctor > postgraduate > undergraduate-->
             <rGpa>3.0</rGpa>
             <skills><!--required
@@ -62,33 +62,6 @@ Zhang added on 9/Mar/2023--><!--3.10YFK改了一点东西，把两个库夹在�
     </requirements>
     <candidates>
 
-        
-
-        <candidate>
-            <cId>24336</cId>
-            <name>Alex</name>
-            <workExp>true</workExp>
-            <eduLevel>1</eduLevel>
-            <Gpa>3.2</Gpa>
-            <skills>
-                <a>matlab</a>
-                <a>excel</a>
-                <a>programming</a>
-            </skills>
-        </candidate>
-
-        <candidate>
-            <cId>24337</cId>
-            <name>Alan</name>
-            <workExp>true</workExp>
-            <eduLevel>1</eduLevel>
-            <Gpa>3.3</Gpa>
-            <skills>
-                <a>matlab</a>
-                <a>excel</a>
-                <a>system engineering</a>
-            </skills>
-        </candidate>
 
         <candidate>
             <cId>24338</cId>
@@ -290,5 +263,14 @@ Zhang added on 9/Mar/2023--><!--3.10YFK改了一点东西，把两个库夹在�
                 <a>play</a>
             </skills>
         </Staff>
+        <Staff>
+            <sId>24338</sId>
+            <trained>true</trained>
+            <name>Black</name>
+            <workExp>false</workExp>
+            <eduLevel>2</eduLevel>
+            <Gpa>2</Gpa>
+            
+        <skills><a>matlab</a><a>excel</a><a>academic writing</a></skills></Staff>
     </SuitableStaffs>
 </Database>

@@ -90,9 +90,57 @@ public class Administrator extends User{
         }
     }
 
-    public static void saveSuitableStaff(String cId) {
+    public static void seeAllCandidates(){
+        List<Candidate> canList = null;
+        try {
+            canList = DBReader.getCandidateList();
+        } catch (ParserConfigurationException | IOException | SAXException e) {
+            // e.printStackTrace();
+        }
+        for(Candidate can: canList){
+            System.out.println(can.toString());
+        }
+    }
+
+    
+    public static void seeAllStaffs(){
+        List<SuitableStaff> sList = null;
+        try {
+            sList = DBReader.getStaffList();
+        } catch (ParserConfigurationException | IOException | SAXException e) {
+            // e.printStackTrace();
+        }
+        for(Candidate s: sList){
+            System.out.println(s.toString());
+        }
+    }
+
+    // public static void feedbackAndSaveStaff(int rID,int cID)
+    // {
+
+    //     try {//delete xml
+    //         DBWriter.deleteXML(rID, "requirement");
+    //     } catch (TransformerException e) {
+    //         // TODO Auto-generated catch block
+    //         e.printStackTrace();
+    //     }//
+    //     saveSuitableStaff(cID);//save staff, delete corresponding  candidate code within this method
+    //     //feedback starts
+
+        
+    //     //feedback ends
+
+    // }
+
+    public static void saveSuitableStaff(int rID,int cId) {
         List<Candidate> cList = null;
         Candidate chosenCandidate = null;
+        // try {//delete xml
+        //     DBWriter.deleteXML(rID, "requirement");
+        // } catch (TransformerException e) {
+        //     // TODO Auto-generated catch block
+        //     e.printStackTrace();
+        // }//
         try {
             cList = DBReader.getCandidateList();
         } catch (ParserConfigurationException | IOException | SAXException e) {
@@ -100,10 +148,12 @@ public class Administrator extends User{
         }
 
         for(Candidate c: cList){
-            if(c.getId() == Integer.parseInt(cId)){
+            if(c.getId() == (cId)){
                 chosenCandidate = c;
                 // int sID=c.getId()+1000;
                 SuitableStaff suitableStaff = new SuitableStaff(false,c.getName(), c.getWorkExperience(), c.getEducationLevel(), c.getGpa());
+                suitableStaff.setSkills(c.getSkills());
+                suitableStaff.setId(c.getId());
                 // write suitableStaff to DBWriter
                 try {
                     DBWriter.addSuitableStaff(suitableStaff);
@@ -114,13 +164,11 @@ public class Administrator extends User{
             }
         }
         // delete this chosenCandidate from xml candidates
-        try {
-            DBWriter.deleteXML(Integer.parseInt(cId),"candidate");
-        } catch (TransformerException e) {
-            // e.printStackTrace();
-        }
+        // try {
+        //     DBWriter.deleteXML((cId),"candidate");
+        // } catch (TransformerException e) {
+        //     // e.printStackTrace();
+        // }
     }
 
-    public static void trainStaff(String staffId, String time) {
-    }
 }

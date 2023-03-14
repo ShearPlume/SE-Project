@@ -1,7 +1,12 @@
-import javax.xml.transform.TransformerException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+
+import org.xml.sax.SAXException;
 public class ClassDirector extends User{
     // private String className;
     ArrayList<Integer>reqList;
@@ -12,6 +17,58 @@ public class ClassDirector extends User{
         this.writeFileAcess = true;
         reqList=new ArrayList<>();
     }
+
+    public void trainStaff(ArrayList<SuitableStaff> suitableStaffs)
+    {
+        return;
+    }
+
+    public void trainStaff(int sID)
+    {
+        List<SuitableStaff> sList = null;
+        SuitableStaff staffToBeTrained = null;
+        try {
+            sList = DBReader.getStaffList();
+        } catch (ParserConfigurationException | IOException | SAXException e) {
+            // e.printStackTrace();
+        }
+        for(SuitableStaff s: sList){
+            if(s.getId() == (sID)){
+                            // staffToBeTrained = new SuitableStaff(true,s.getName(), s.getWorkExperience(), s.getEducationLevel(), s.getGpa());
+                            // staffToBeTrained.setId(sID);
+                            // staffToBeTrained.setSkills(s.getSkills());
+                            // write suitableStaff to DBWriter
+
+                            s.setIftrained(true);
+                            try {
+                                DBWriter.updateStaff(s);
+                            } catch (TransformerException e) {
+                                // e.printStackTrace();
+                            }
+                            break ;
+                        }
+        }
+    }
+    // public void trainStaff(int sID)
+    // {
+
+
+
+    //     for(SuitableStaff s: sList){
+    //         if(s.getId() == (sID)){
+    //             staffToBeTrained = new SuitableStaff(true,s.getName(), s.getWorkExperience(), s.getEducationLevel(), s.getGpa());
+    //             // write suitableStaff to DBWriter
+    //             try {
+    //                 DBWriter.updateStaff(staffToBeTrained);
+    //             } catch (ParserConfigurationException | IOException | SAXException |TransformerException e) {
+    //                 // e.printStackTrace();
+    //             }
+    //             break ;
+    //         }
+    //     }
+    // }
+    // }
+
 
 
         public void writeReqToDatabase(){

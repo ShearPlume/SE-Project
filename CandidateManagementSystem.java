@@ -71,16 +71,6 @@ public class CandidateManagementSystem{//using Singleton Pattern
     }
 
 
-    public void train(ArrayList<SuitableStaff> suitableStaffs)
-    {
-        return;
-    }
-
-    public void train(int sID)
-    {
-        
-        return;
-    }
 
     public void commandProcessor(String command) {
         String[] split = command.split(" ");
@@ -116,7 +106,7 @@ public class CandidateManagementSystem{//using Singleton Pattern
                 }
                 case "ARRANGE_TRAINING": {
                     int staffID=Integer.parseInt(split[1]);
-                    train(null);
+                    currentDir.trainStaff(staffID);
                     break;
                 }
                 default:
@@ -147,9 +137,17 @@ public class CandidateManagementSystem{//using Singleton Pattern
                     break;
                 }
                 case "SHOW_REQLIST":{
-                    admin.seeAllRequirements();
+                    Administrator.seeAllRequirements();
                     break;
-                }     
+                }  
+                case "SHOW_CANLIST":{
+                    Administrator.seeAllCandidates();
+                    break;
+                } 
+                case "SHOW_STAFFLIST":{
+                    Administrator.seeAllStaffs();
+                    break;
+                }       
                 case "SEARCH": {
                     // command: SEARCH 1/2/3/...                 
                     try {
@@ -159,15 +157,16 @@ public class CandidateManagementSystem{//using Singleton Pattern
                         // TODO: handle exception
                         System.out.println("invalid command");
                     }
+                    break;
                 }          
-                case "SAVE_SUITABLE": {
+                case "SAVE_SUITABLE": {//save staff(delete corresponding req and candidate from xml as well)
                     if(split[1]=="ALL")//Save result of all director to DB
                     {
 
                     }
                     else{
-                        admin.saveSuitableStaff(split[1]);//Save result of specific director to DB
-
+                        Administrator.saveSuitableStaff(Integer.parseInt(split[1]), Integer.parseInt(split[2]));//Save result of specific director to DB
+                        
                         // int directorNum=Integer.parseInt(split[1]);
                     }
                     break;
