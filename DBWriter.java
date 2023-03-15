@@ -315,7 +315,7 @@ public class DBWriter {
             NodeList nlist = searchNode.getChildNodes();
             for (int i = 0; i < nlist.getLength(); i++) {
                 Node subnode = nlist.item(i);
-                System.out.println(subnode.getNodeName() + ":" + subnode.getTextContent());
+                // System.out.println(subnode.getNodeName() + ":" + subnode.getTextContent());
                 if (subnode.getNodeName().equals("name")) {
                     subnode.setTextContent(staff.getName());
                 }

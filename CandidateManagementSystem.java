@@ -17,16 +17,16 @@ public class CandidateManagementSystem{//using Singleton Pattern
     ClassDirector currentDir;
 
     // Private constructor to prevent other classes from creating instances
-    // private CandidateManagementSystem() {
-    //     // Connect to the database using an XML file
-    //     admin=new Administrator(0);
-    //     currentUser=admin;//default user is admin
-    //     currentDir=null;
-    //     directors=new ArrayList<>();
-    //     DB=getDatabaseConnection("Database.xml");
-    //     reader=new DBReader(DB);
-    //     writer=new DBWriter(DB);
-    // }
+    private CandidateManagementSystem() {
+        // Connect to the database using an XML file
+        admin=new Administrator(0);
+        currentUser=admin;//default user is admin
+        currentDir=null;
+        directors=new ArrayList<>();
+        DB=getDatabaseConnection("Database.xml");
+        reader=new DBReader(DB);
+        writer=new DBWriter(DB);
+    }
 
     public void start()
     {
@@ -110,11 +110,6 @@ public class CandidateManagementSystem{//using Singleton Pattern
                     }
                     break;
                 }
-                case "ARRANGE_TRAINING": {
-                    int staffID=Integer.parseInt(split[1]);
-                    currentDir.trainStaff(staffID);
-                    break;
-                }
                 default:
                 break;
             }
@@ -175,6 +170,11 @@ public class CandidateManagementSystem{//using Singleton Pattern
                         
                         // int directorNum=Integer.parseInt(split[1]);
                     }
+                    break;
+                }
+                case "ARRANGE_TRAINING": {
+                    int staffID=Integer.parseInt(split[1]);
+                    admin.trainStaff(staffID);
                     break;
                 }
                 default:{

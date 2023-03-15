@@ -10,7 +10,7 @@ import org.xml.sax.SAXException;
 public class Administrator extends User{
     // Ye Zhang added on 11/Mar
     public Administrator(int userID){
-        this.userID = userID;
+        setID(userID);
         // admin can read requirements but cannot write requirements
         this.readFileAcess = true;
         this.writeFileAcess = true;
@@ -101,7 +101,6 @@ public class Administrator extends User{
             System.out.println(can.toString());
         }
     }
-
     
     public static void seeAllStaffs(){
         List<SuitableStaff> sList = null;
@@ -115,6 +114,32 @@ public class Administrator extends User{
         }
     }
 
+    public void trainStaff(int sID)
+    {
+        List<SuitableStaff> sList = null;
+        // SuitableStaff staffToBeTrained = null;
+        try {
+            sList = DBReader.getStaffList();
+        } catch (ParserConfigurationException | IOException | SAXException e) {
+            // e.printStackTrace();
+        }
+        for(SuitableStaff s: sList){
+            if(s.getId() == (sID)){
+                            // staffToBeTrained = new SuitableStaff(true,s.getName(), s.getWorkExperience(), s.getEducationLevel(), s.getGpa());
+                            // staffToBeTrained.setId(sID);
+                            // staffToBeTrained.setSkills(s.getSkills());
+                            // write suitableStaff to DBWriter
+
+                            s.setIftrained(true);
+                            try {
+                                DBWriter.updateStaff(s);
+                            } catch (TransformerException e) {
+                                // e.printStackTrace();
+                            }
+                            break ;
+                        }
+        }
+    }
     // public static void feedbackAndSaveStaff(int rID,int cID)
     // {
 

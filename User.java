@@ -1,8 +1,12 @@
 public class User{
-    int userID;
+    private int userID;
     boolean readFileAcess;
     boolean writeFileAcess;
 
+    public void setID(int id)
+    {
+        this.userID=id;
+    }
     public int getID()
     {
         return userID;

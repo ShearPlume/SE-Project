@@ -12,7 +12,7 @@ public class ClassDirector extends User{
     ArrayList<Integer>reqList;
     public ClassDirector(int userID){
         // this.className = className;
-        this.userID=userID;
+        setID(userID);
         this.readFileAcess = false;
         this.writeFileAcess = true;
         reqList=new ArrayList<>();
@@ -23,32 +23,7 @@ public class ClassDirector extends User{
         return;
     }
 
-    public void trainStaff(int sID)
-    {
-        List<SuitableStaff> sList = null;
-        SuitableStaff staffToBeTrained = null;
-        try {
-            sList = DBReader.getStaffList();
-        } catch (ParserConfigurationException | IOException | SAXException e) {
-            // e.printStackTrace();
-        }
-        for(SuitableStaff s: sList){
-            if(s.getId() == (sID)){
-                            // staffToBeTrained = new SuitableStaff(true,s.getName(), s.getWorkExperience(), s.getEducationLevel(), s.getGpa());
-                            // staffToBeTrained.setId(sID);
-                            // staffToBeTrained.setSkills(s.getSkills());
-                            // write suitableStaff to DBWriter
 
-                            s.setIftrained(true);
-                            try {
-                                DBWriter.updateStaff(s);
-                            } catch (TransformerException e) {
-                                // e.printStackTrace();
-                            }
-                            break ;
-                        }
-        }
-    }
     // public void trainStaff(int sID)
     // {
 
@@ -103,7 +78,7 @@ public class ClassDirector extends User{
             //set all requirements in Database
             Requirement requirement = new Requirement();
             //TODO：need DBwriter send ID
-            requirement.setId(this.userID*100+reqList.size()+1);
+            requirement.setId(this.getID()*100+reqList.size()+1);
             requirement.setCourse(course);
             requirement.setWorkExperience(workExperience);
             requirement.setEducationLevel(educationLevel);
